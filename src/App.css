@@ -2,37 +2,182 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*styling for title and search bar in the site's header*/
+.title-and-search-bar{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title{
+  font-size:25px;
+  margin: 15px 0 0 -0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-bar{
+  margin: 15px 0 0 0;
+}
+
+.search-bar > input{
+  padding:10px;
+  width:300px;
+}
+
+.search-bar > button{
+  padding:10px;
+}
+
+/*styling for navbar ul in header*/
+.navbar{
+  background-color: aquamarine;
+  padding:20px;
+  margin-bottom:0px;
+  display:flex;
+  justify-content: space-evenly;
+}
+.navbar > li{
+  list-style-type: none;
+}
+
+/*styling for image in header*/
+
+.header-img{
+  height:600px;
+  width:100%;
+}
+
+
+/*Styling for the Product Container*/ 
+.product-container > ul{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.product-container > ul > li{
+  list-style-type: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.product-container-title{
+  font-size:25px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+/*Styling for Product Cards*/ 
+.product-card{
+  margin:15px;
+}
+
+.product-card > p{
+  word-wrap: break-word;
+}
+
+.product-card-image{
+  border: 1px double #ddd;
+  border-radius: 4px; 
+  padding: 5px; 
+  width: auto;
+  height:300px;
+}
+
+.product-card-image:hover{
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.product-card > span{
+  color: rgb(56, 167, 130);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+
+
+/*styling for the customer guarantee div*/
+
+.guarantee-div{
+  background-color: black;
+  color:white;
+  display:flex;
+  justify-content: space-evenly;
+}
+
+.guarantee-div > div{
+  max-width:320px;
+}
+
+.guarantee-div > p{
+  word-wrap: break-word;
+}
+
+/*styling inside the footer*/
+
+.footer{
+  background-color: black;
+  color:white;
+  padding:30px;
+}
+
+.footer > a{
+  color:white;
+  text-decoration: none;
+}
+
+.footer > a:hover{
+  cursor: pointer;
+}
+
+
+/*styling for log in form component*/
+
+.login-div{
+  margin:50px;
+  margin-bottom:250px;
+}
+
+.login-form{
+  border:1px  solid black;
+  width:400px;
+  background-color: white;
+  padding:10px;
+  margin: 0 auto;
+}
+
+.login-form > h1{
+  font-size:25px;
+}
+.input-container{
+  border:solid whitesmoke;
+  background-color:#f9f9f9;
+  width:200px;
+  height:30px;
+  margin: 10px auto 10px auto;
+}
+
+.input-container > input{
+  border:none;
+  background-color: #f9f9f9;
+  font-size:15px;
+}
+
+.input-container > i{
+  margin-right:20px;
+}
+
+.input-container > input:focus{
+  outline-color: #f9f9f9;
+  outline-style: none;
+}
+
+ .submit-btn{
+  border-radius:30px;
+  padding:5px;
+  width:100px;
+}
+
+ .submit-btn:focus{
+  outline-color: #f9f9f9;
+  outline-style: none;
 }
