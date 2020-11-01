@@ -19,6 +19,9 @@ const userReducer = (state = {},action) =>{
         case "SET CUSTOMER":
             const newState = {...state, ...action.payload}
             return newState
+        case "LOGOUT":
+            const resetState = {}
+            return resetState
         default:
             return state
     }

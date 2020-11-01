@@ -17,16 +17,28 @@ class App extends React.Component {
       .then((productsArr) => {
         this.props.setProducts(productsArr);
       });
+    console.log("I made a request to get your products")
+
+    //keep user logged in if localStorage still has token
+    if(localStorage.token){
+      fetch("http://localhost:3000/keep-logged-in",{
+        method:"GET",
+        headers:{
+          "Authorization": localStorage.token
+        }
+      })
+      .then(res => res.json())
+      .then(userInfo => this.props.setCustomer(userInfo))
+    }
   }
 
   render() {
-    // console.log(this.props)
+    console.log(this.props)
     return (
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path = "/login">
-            <LoginForm/>
+          <Route path = "/login" render = {props => <LoginForm routerProps = {props} />} >
           </Route>
           <Route exact path = "/">
             <Main/>
@@ -43,11 +55,11 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (globalState) => {
-  return {
-    products: globalState.products,
-  };
-};
+// const mapStateToProps = (globalState) => {
+//   return {
+//     products: globalState.products,
+//   };
+// };
 
 //this is an action creator that returns an action
 const setProducts = (arrayOfProducts) => {
@@ -57,8 +69,16 @@ const setProducts = (arrayOfProducts) => {
   };
 };
 
+const setCustomer = (customerObj) =>{
+  return {
+      payload:customerObj,
+      type:"SET CUSTOMER"
+  }
+}
+
 const mapDispatchToProps = {
   setProducts: setProducts,
+  setCustomer: setCustomer
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(withRouter(App));

@@ -41,22 +41,28 @@ class LoginForm extends React.Component {
     })
     .then(res => res.json())
     .then(customer => {
-        const betterCustomerObj = {
-            customer:{...customer.customer_info},
-            token: customer.token
+        if(customer.error){
+            alert(`${customer.error}`)
+        }else{
+            const betterCustomerObj = {
+                customer:{...customer.customer_info},
+                token: customer.token
+            }
+            this.props.setCustomer(betterCustomerObj)
+            localStorage.setItem("customerName", betterCustomerObj.customer.name)
+            localStorage.setItem("token", customer.token)
+            
         }
-        console.log(betterCustomerObj)
-        this.props.setCustomer(betterCustomerObj)
-        localStorage.setItem("customer", betterCustomerObj)
-        alert("successful login")
     })
+
+    //send back to home page
+    this.props.routerProps.history.push("/")
   }
 
 
   render() {
-    return (
-      <div className = "login-div">
-          <form onSubmit = {this.handleSubmit} className="login-form">
+      const loginForm = (
+        <form onSubmit = {this.handleSubmit} className="login-form">
         <h1>Log in Form</h1>
         <div className="input-container">
           <i className="fa fa-envelope" aria-hidden="true"></i>
@@ -80,6 +86,10 @@ class LoginForm extends React.Component {
         <input className = "submit-btn" type="submit" value = "Log in"/>
         <p>Register for an Account</p>
       </form>
+      )
+    return (
+      <div className = "login-div">
+          {loginForm}
       </div>
     );
   }
