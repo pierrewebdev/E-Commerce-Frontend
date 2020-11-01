@@ -79,7 +79,7 @@
   border-radius: 4px; 
   padding: 5px; 
   width: auto;
-  height:300px;
+  height:250px;
 }
 
 .product-card-image:hover{
@@ -90,6 +90,22 @@
   color: rgb(56, 167, 130);
   font-weight: bold;
   font-size: 16px;
+}
+
+.product-btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-25%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  min-width:100px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 
