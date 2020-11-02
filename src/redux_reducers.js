@@ -17,11 +17,22 @@ const productReducer = (state = {products:[]}, action) => {
 const userReducer = (state = {},action) =>{
     switch(action.type){
         case "SET CUSTOMER":
-            const newState = {...state, ...action.payload}
+            const newState = {
+                ...state,
+            ...action.payload
+            }
             return newState
         case "LOGOUT":
             const resetState = {}
             return resetState
+        case "ADD_TO_CART":
+            const copyOfProducts = [state.customerInfo.currentCart,...action.payload]
+            console.log(copyOfProducts)
+            
+            return {
+                ...state,
+                currentCart:copyOfProducts
+            }
         default:
             return state
     }

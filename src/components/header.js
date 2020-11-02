@@ -6,18 +6,7 @@ import { connect } from "react-redux";
 
 class Header extends React.Component {
   render() {
-    // const logInButton = (
-    //   <Link to="/login" style={{ color: "black", textDecoration: "none" }}>
-    //     <i className="fa fa-user-o" aria-hidden="true"></i> Log In
-    //   </Link>
-    // );
-
-    // const logOutButton = (
-    //   <i onClick={this.handleClick} className="fa fa-user-o" aria-hidden="true">
-    //     {" "}
-    //     Log out
-    //   </i>
-    // );
+    console.log(this.props.customer)
     return (
       <header className="header">
         <div className="title-and-search-bar">
@@ -33,21 +22,31 @@ class Header extends React.Component {
             <i className="fa fa-book" aria-hidden="true"></i> Purchase History
           </li>
           <li>
-            <i className="fa fa-shopping-cart"></i> Shopping Cart
+            <Link style={{ color: "black", textDecoration: "none" }} to="/cart">
+              <i className="fa fa-shopping-cart"></i> Shopping Cart
+            </Link>
           </li>
-          {this.props.customer ?  <li><Link style={{ color: "black", textDecoration: "none" }} to ="#">{`${this.props.customer.name}'s profile`}</Link></li>:null}
-          <li><LogUser/></li>
+          {this.props.customer ? (
+            <li>
+              <Link
+                style={{ color: "black", textDecoration: "none" }}
+                to="#"
+              >{`${this.props.customer}'s profile`}</Link>
+            </li>
+          ) : null}
+          <li>
+            <LogUser />
+          </li>
         </ul>
       </header>
     );
   }
 }
 
-
-const mapStateToProps = (globalState) =>{
+const mapStateToProps = (globalState) => {
   return {
-    customer: globalState.customerInfo.customer,
-      };
-}
+    customer: globalState.customerInfo.name
+  };
+};
 
-export default connect(mapStateToProps,null)(Header);
+export default connect(mapStateToProps, null)(Header);

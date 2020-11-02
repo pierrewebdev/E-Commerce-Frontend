@@ -48,8 +48,9 @@ class LoginForm extends React.Component {
                 customer:{...customer.customer_info},
                 token: customer.token
             }
+            console.log(customer)
+            console.log(betterCustomerObj)
             this.props.setCustomer(betterCustomerObj)
-            localStorage.setItem("customerName", betterCustomerObj.customer.name)
             localStorage.setItem("token", customer.token)
             
         }
@@ -95,9 +96,22 @@ class LoginForm extends React.Component {
   }
 }
 
+
 const setCustomer = (customerObj) =>{
+  console.log(customerObj)
+  const {address,email,current_cart,id,name,token} = customerObj.customer
+
+  const niceCustomerObj = {
+    name:name,
+    id:id,
+    address:address,
+    email:email,
+    currentCart:current_cart.serialized_products,
+    token:token,
+    totalPrice: current_cart.total_price
+  }
   return {
-      payload:customerObj,
+      payload:niceCustomerObj,
       type:"SET CUSTOMER"
   }
 }

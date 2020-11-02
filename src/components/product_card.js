@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class ProductCard extends React.Component {
 
@@ -18,7 +19,22 @@ class ProductCard extends React.Component {
   }
 
   addToCart = () =>{
-      //method is supposed to handle adding things to cart and persisting it
+      //make a fetch request to add the item in the customer's current cart
+      fetch("http://localhost:3000/cart_products",{
+          method:"POST",
+          headers:{
+            "Authorization": localStorage.token,
+            "Content-Type":"application/json",
+            Accept:"application/json"
+          },
+          body:JSON.stringify({
+            productId :this.props.id
+          })
+      })
+      .then(res => res.json())
+      .then(data => {
+          this.props.addItemToCart(data.product)
+      })
   }
   render(){
     return (
@@ -39,4 +55,19 @@ class ProductCard extends React.Component {
   }
 }
 
-export default ProductCard;
+//I need to dispatch an action that will update the redux store's state to include new item in customer's current cart
+
+const actionForAddToCart = (productToAddToCart) =>{
+    return{
+        payload:productToAddToCart,
+        type: "ADD_TO_CART"
+    }
+}
+
+const mapDispatchToProps = () =>{
+    return{
+        addItemToCart:actionForAddToCart
+    }
+}
+
+export default connect(null,mapDispatchToProps)(ProductCard)

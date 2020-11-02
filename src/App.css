@@ -72,6 +72,8 @@
 
 .product-card > p{
   word-wrap: break-word;
+  text-align: center;
+  max-width:auto;
 }
 
 .product-card-image{
@@ -198,3 +200,27 @@
   outline-color: #f9f9f9;
   outline-style: none;
 }
+
+/*styling for shopping cart's CartContainer component*/
+#cart-container{
+  width:70%;
+  margin-left:10%;
+}
+
+
+/*styling for shopping cart's CartItem component*/
+
+.cart-img{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px
+}
+
+.cart-item{
+  border-bottom: 1px gray solid;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+

@@ -21,7 +21,7 @@ class LogUser extends React.Component {
               <Link to = "/" style={{ color: "black", textDecoration: "none" }} onClick = {this.handleClick}><i className="fa fa-user-o" aria-hidden="true"> Log out</i></Link>
           )
 
-        const buttonToRender = !this.props.customer? loginButton : logOutButton
+        const buttonToRender = !Object.keys(this.props.customer).length ? loginButton : logOutButton
         return(buttonToRender)
     }
       
@@ -29,7 +29,7 @@ class LogUser extends React.Component {
 
 const mapStateToProps = (globalState) =>{
     return {
-        customer: globalState.customerInfo.customer
+        customer: globalState.customerInfo
     }
 }
 

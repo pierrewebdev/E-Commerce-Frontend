@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class ProductContainer extends React.Component {
   //method to turn product object to a ProductCard Component
   productObjToCard = (productObj) => {
-    return <ProductCard name={productObj.name} image={productObj.image} price = {productObj.price} />;
+    return <ProductCard id = {productObj.id} name={productObj.name} image={productObj.image} price = {productObj.price} />;
   };
 
   //method to create list of product cards out of array of products
@@ -30,7 +30,7 @@ class ProductContainer extends React.Component {
 
 const mapStateToProps = (globalState) => {
   return {
-    products: globalState.productInfo.products,
+    products: globalState.productInfo.products
   };
 };
 
