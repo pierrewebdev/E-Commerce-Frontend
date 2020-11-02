@@ -76,7 +76,6 @@ const setProducts = (arrayOfProducts) => {
 };
 
 const setCustomer = (customerObj) =>{
-  console.log(customerObj)
   const {address,email,current_cart,id,name,token} = customerObj.customer
 
   const niceCustomerObj = {

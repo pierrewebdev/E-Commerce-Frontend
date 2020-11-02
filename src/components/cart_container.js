@@ -5,13 +5,16 @@ import CartItem from "./cart_item"
 
 class CartContainer extends React.Component {
     arrOfCartItems = () =>{
-        const niceProducts = this.props.products
-        return niceProducts.map((product,index)=> <li style = {{listStyleType:"none"}} key = {index}><CartItem 
+        const niceProducts = this.props.products.slice()
+
+        
+        return niceProducts.map((product,index)=> <li style = {{listStyleType:"none"}} key = {index}>
+            <CartItem 
             name = {product.name}
             image = {product.image}
             description = {product.description}
             price = {product.price} />
-         </li>
+          </li>
         )
     }
 
@@ -23,15 +26,19 @@ class CartContainer extends React.Component {
 
   render() {
     const nicePrice = this.props.price
-    return (
-      <div id = "cart-container">
-        <p style ={{fontWeight:"bold",fontSize:"23px"}}>Total Price: ${nicePrice} </p>
-        <ul>
-            {this.arrOfCartItems()}
-        </ul>
-        <button onClick = {this.handleCheckout}>Check Out</button>
-      </div>
-    );
+    const component = (
+        <div id = "cart-container">
+          <p style ={{fontWeight:"bold",fontSize:"23px"}}>Total Price: ${nicePrice} </p>
+          <ul>
+              {this.arrOfCartItems()}
+          </ul>
+          <button onClick = {this.handleCheckout}>Check Out</button>
+        </div>
+      )
+
+      const ternary = this.props.products.length>0 ? component : <p>Props is undefined</p>
+
+      return ternary
   }
 }
 

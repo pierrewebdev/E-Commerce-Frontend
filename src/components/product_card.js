@@ -33,7 +33,7 @@ class ProductCard extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-          this.props.addItemToCart(data.product)
+          this.props.actionForAddToCart(data.product)
       })
   }
   render(){
@@ -64,10 +64,6 @@ const actionForAddToCart = (productToAddToCart) =>{
     }
 }
 
-const mapDispatchToProps = () =>{
-    return{
-        addItemToCart:actionForAddToCart
-    }
-}
+const mapDispatchToProps = {actionForAddToCart}
 
 export default connect(null,mapDispatchToProps)(ProductCard)

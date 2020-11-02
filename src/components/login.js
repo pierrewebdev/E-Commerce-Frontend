@@ -48,8 +48,6 @@ class LoginForm extends React.Component {
                 customer:{...customer.customer_info},
                 token: customer.token
             }
-            console.log(customer)
-            console.log(betterCustomerObj)
             this.props.setCustomer(betterCustomerObj)
             localStorage.setItem("token", customer.token)
             
@@ -98,7 +96,6 @@ class LoginForm extends React.Component {
 
 
 const setCustomer = (customerObj) =>{
-  console.log(customerObj)
   const {address,email,current_cart,id,name,token} = customerObj.customer
 
   const niceCustomerObj = {
