@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 
 class Header extends React.Component {
   render() {
-    console.log(this.props.customer)
     return (
       <header className="header">
         <div className="title-and-search-bar">
@@ -19,7 +18,7 @@ class Header extends React.Component {
         </div>
         <ul className="navbar">
           <li>
-            <i className="fa fa-book" aria-hidden="true"></i> Purchase History
+           <Link style={{ color: "black", textDecoration: "none" }} to = "/purchase-history"> <i className="fa fa-book" aria-hidden="true"></i> Purchase History</Link>
           </li>
           <li>
             <Link style={{ color: "black", textDecoration: "none" }} to="/cart">

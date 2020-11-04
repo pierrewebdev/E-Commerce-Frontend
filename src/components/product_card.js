@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 class ProductCard extends React.Component {
 
     state = {
-        showing:false
+      showing:false
     }
 
   showMe = () =>{

@@ -2,7 +2,9 @@ import React from "react";
 import Header from "./components/header";
 import Main from "./components/main";
 import LoginForm from "./components/login";
-import CartContainer from "./components/cart_container"
+import RegisterForm from "./components/register";
+import CartContainer from "./components/cart_container";
+import PurchaseHistory from "./components/purchase_history";
 import "./App.css";
 import { connect } from "react-redux";
 import { withRouter,Switch, Route } from "react-router-dom";
@@ -41,16 +43,19 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Switch>
-          <Route path = "/login" render = {props => <LoginForm routerProps = {props} />} >
+          <Route exact path = "/login" render = {props => <LoginForm routerProps = {props} />} >
           </Route>
+          <Route exact path = "/register" render = {props => <RegisterForm routerProps = {props} />} ></Route>
           <Route exact path = "/">
             <Main/>
           </Route>
           <Route exact path = "/cart">
             <CartContainer/>
           </Route>
+          <Route exact path = "/purchase-history">
+            <PurchaseHistory/>
+          </Route>
         </Switch>
-
         <footer className="footer">
           <a href="https://github.com/pierrewebdev/">
             Developed By Patrick Pierre
@@ -76,7 +81,9 @@ const setProducts = (arrayOfProducts) => {
 };
 
 const setCustomer = (customerObj) =>{
-  const {address,email,current_cart,id,name,token} = customerObj.customer
+  const {address,email,current_cart,id,name,} = customerObj.customer
+  const pastCarts = customerObj.customer.past_carts
+  const token = customerObj.token
 
   const niceCustomerObj = {
     name:name,
@@ -84,8 +91,10 @@ const setCustomer = (customerObj) =>{
     address:address,
     email:email,
     currentCart:current_cart.serialized_products,
+    currentCartId:current_cart.id,
     token:token,
-    totalPrice: current_cart.total_price
+    totalPrice: current_cart.total_price,
+    pastCarts: pastCarts
   }
   return {
       payload:niceCustomerObj,

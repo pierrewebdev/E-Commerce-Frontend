@@ -193,7 +193,7 @@
  .submit-btn{
   border-radius:30px;
   padding:5px;
-  width:100px;
+  width:150px;
 }
 
  .submit-btn:focus{
@@ -201,10 +201,16 @@
   outline-style: none;
 }
 
+/*styling for register form component*/
+.register-form-div{
+  margin: 50px 0px 220px 0;
+}
+
 /*styling for shopping cart's CartContainer component*/
 #cart-container{
   width:70%;
   margin-left:10%;
+  min-height:70vh;
 }
 
 
@@ -223,4 +229,22 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+/* Styling for purchase history*/
+
+.purchase-history-item{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  align-items: space-around;
+  flex-wrap:wrap;
+  max-width:auto;
+  margin:0 100px 0 100px;
+}
+
+.purchase-history-item > img,p{
+  margin:20px;
+}
+
+
 

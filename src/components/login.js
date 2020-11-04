@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 class LoginForm extends React.Component {
@@ -41,6 +42,7 @@ class LoginForm extends React.Component {
     })
     .then(res => res.json())
     .then(customer => {
+        console.log(customer)
         if(customer.error){
             alert(`${customer.error}`)
         }else{
@@ -83,7 +85,8 @@ class LoginForm extends React.Component {
         </div>
 
         <input className = "submit-btn" type="submit" value = "Log in"/>
-        <p>Register for an Account</p>
+        <br/>
+        <Link style = {{color:"black"}}to = "/register">Register for an Account</Link>
       </form>
       )
     return (
@@ -96,7 +99,9 @@ class LoginForm extends React.Component {
 
 
 const setCustomer = (customerObj) =>{
-  const {address,email,current_cart,id,name,token} = customerObj.customer
+  const {address,email,current_cart,id,name,} = customerObj.customer
+  const pastCarts = customerObj.customer.past_carts
+  const token = customerObj.token
 
   const niceCustomerObj = {
     name:name,
@@ -104,14 +109,17 @@ const setCustomer = (customerObj) =>{
     address:address,
     email:email,
     currentCart:current_cart.serialized_products,
+    currentCartId:current_cart.id,
     token:token,
-    totalPrice: current_cart.total_price
+    totalPrice: current_cart.total_price,
+    pastCarts: pastCarts
   }
   return {
       payload:niceCustomerObj,
       type:"SET CUSTOMER"
   }
 }
+
 
 const mapDispatchToProps = {
   setCustomer: setCustomer

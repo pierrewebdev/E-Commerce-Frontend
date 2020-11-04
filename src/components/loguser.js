@@ -21,7 +21,7 @@ class LogUser extends React.Component {
               <Link to = "/" style={{ color: "black", textDecoration: "none" }} onClick = {this.handleClick}><i className="fa fa-user-o" aria-hidden="true"> Log out</i></Link>
           )
 
-        const buttonToRender = !Object.keys(this.props.customer).length ? loginButton : logOutButton
+        const buttonToRender = !this.props.customer.name ? loginButton : logOutButton
         return(buttonToRender)
     }
       
