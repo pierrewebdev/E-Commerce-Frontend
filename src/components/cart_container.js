@@ -1,6 +1,8 @@
 import React from "react";
+import {deleteProductFromCart, updateStateWithNewCart} from "../redux_actions.js"
 import { connect } from "react-redux";
 import CartItem from "./cart_item"
+import {randomId} from "../randomIdGenerator"
 
 
 class CartContainer extends React.Component {
@@ -8,12 +10,15 @@ class CartContainer extends React.Component {
         const niceProducts = this.props.products.slice()
 
         
-        return niceProducts.map((product,index)=> <li style = {{listStyleType:"none"}} key = {index}>
-            <CartItem 
+        return niceProducts.map((product)=> <li style = {{listStyleType:"none"}} key = {randomId()}>
+            <CartItem
+            productId = {product.id} 
             name = {product.name}
             image = {product.image}
             description = {product.description}
-            price = {product.price} />
+            price = {product.price}
+            delete = {this.deleteFromCart}
+             />
           </li>
         )
     }
@@ -38,8 +43,27 @@ class CartContainer extends React.Component {
         })
         .then(res => res.json())
         .then(newCartInfo=> {
-            debugger
             this.props.updateStateWithNewCart(newCartInfo)
+        })
+    }
+
+    deleteFromCart = (productId) => {
+        const cartId = this.props.cartId
+        fetch("http://localhost:3000/delete-from-cart",{
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json",
+                Accept:"application/json",
+                "Authorization": localStorage.token
+            },
+            body:JSON.stringify({
+                productId:productId,
+                cartId:cartId
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            this.props.deleteProductFromCart(data.product)
         })
     }
 
@@ -74,17 +98,9 @@ const mapStateToProps = (globalState) =>{
         products: globalState.customerInfo.currentCart,
         cartId:globalState.customerInfo.currentCartId,
         price:globalState.customerInfo.totalPrice,
-        token:globalState.customerInfo.token
     }
 }
 
-const updateStateWithNewCart = (newCart) =>{
-    return {
-        payload:newCart,
-        type:"NEW_CART"
-    }
-}
-
-const mapDispatchToProps = {updateStateWithNewCart}
+const mapDispatchToProps = {updateStateWithNewCart,deleteProductFromCart}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer)

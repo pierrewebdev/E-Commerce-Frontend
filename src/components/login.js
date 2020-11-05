@@ -1,4 +1,5 @@
 import React from "react";
+import {setCustomer} from "../redux_actions.js"
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "../App.css";
@@ -96,30 +97,6 @@ class LoginForm extends React.Component {
     );
   }
 }
-
-
-const setCustomer = (customerObj) =>{
-  const {address,email,current_cart,id,name,} = customerObj.customer
-  const pastCarts = customerObj.customer.past_carts
-  const token = customerObj.token
-
-  const niceCustomerObj = {
-    name:name,
-    id:id,
-    address:address,
-    email:email,
-    currentCart:current_cart.serialized_products,
-    currentCartId:current_cart.id,
-    token:token,
-    totalPrice: current_cart.total_price,
-    pastCarts: pastCarts
-  }
-  return {
-      payload:niceCustomerObj,
-      type:"SET CUSTOMER"
-  }
-}
-
 
 const mapDispatchToProps = {
   setCustomer: setCustomer

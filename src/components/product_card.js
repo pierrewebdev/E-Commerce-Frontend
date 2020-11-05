@@ -1,5 +1,7 @@
 import React from "react";
+import {addToCart} from "../redux_actions.js"
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class ProductCard extends React.Component {
 
@@ -33,7 +35,7 @@ class ProductCard extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-          this.props.actionForAddToCart(data.product)
+          this.props.addToCart(data.product)
       })
   }
   render(){
@@ -46,24 +48,17 @@ class ProductCard extends React.Component {
               src={this.props.image}
               alt="One of our Fitness and Health Products"
             />
-            <button onClick = {this.addToCart} style = {this.showMe()} className = "product-btn">Add to Cart</button>
+            <button onClick = {this.addToCart} style = {this.showMe()} className = "product-btn-add">Add to Cart</button>
+            <button className = "product-btn-info" style = {this.showMe()}><Link to = {`${this.props.name}`}>More info</Link></button>
           </div>
-          <p className="product-card-name">{this.props.name}</p>
+          <p className="product-card-name" onClick = {this.seeProductPage}>{this.props.name}</p>
           <span>${this.props.price}</span>
         </div>
       );
   }
 }
 
-//I need to dispatch an action that will update the redux store's state to include new item in customer's current cart
+const mapDispatchToProps = {addToCart}
 
-const actionForAddToCart = (productToAddToCart) =>{
-    return{
-        payload:productToAddToCart,
-        type: "ADD_TO_CART"
-    }
-}
-
-const mapDispatchToProps = {actionForAddToCart}
 
 export default connect(null,mapDispatchToProps)(ProductCard)

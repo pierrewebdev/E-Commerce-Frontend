@@ -1,4 +1,5 @@
 import React from "react"
+import {logoutCustomer} from "../redux_actions.js"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
@@ -30,14 +31,6 @@ class LogUser extends React.Component {
 const mapStateToProps = (globalState) =>{
     return {
         customer: globalState.customerInfo
-    }
-}
-
-//an action for the user reducer
-const logoutCustomer = () =>{
-    return {
-        payload: {},
-        type: "LOGOUT"
     }
 }
 

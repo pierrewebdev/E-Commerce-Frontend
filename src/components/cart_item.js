@@ -1,6 +1,11 @@
 import React from "react";
 
 function CartItem(props) {
+
+  const handleDelete = () =>{
+    props.delete(props.productId)
+  }
+
   return (
     <>
       <div className = "cart-item">
@@ -11,6 +16,7 @@ function CartItem(props) {
           <p>{props.name}</p>
           <p>{props.description}</p>
           <p>Price: ${props.price}</p>
+          <button onClick = {handleDelete}>Delet From Cart</button>
         </div>
       </div>
       <br/>

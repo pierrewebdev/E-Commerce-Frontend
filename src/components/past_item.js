@@ -16,8 +16,6 @@ function PastItem(props) {
     });
   };
 
-  console.log(props);
-
   return (
     <div>
       <p style = {{fontSize:"22px",fontWeight:"bold"}}>Ordered on {props.pastCart.timeStamp} </p>

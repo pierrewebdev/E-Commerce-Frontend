@@ -65,6 +65,16 @@ const userReducer = (state = userReducerDefault,action) =>{
                 pastCarts: pastCarts
 
             }
+        case "DELETE":
+            console.log("Deleting an item from the cart")
+            const filteredCart = state.currentCart.filter( product => {
+                return product.id !== action.payload.id
+            })
+            return {
+                ...state,
+                currentCart:filteredCart,
+                totalPrice: state.totalPrice - action.payload.price
+            }
         default:
             return state
     }

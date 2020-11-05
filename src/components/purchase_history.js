@@ -1,6 +1,7 @@
 import React from "react"
 import PastItem from "./past_item"
 import { connect } from "react-redux"
+import {randomId} from "../randomIdGenerator"
 
 class PurchaseHistory extends React.Component{
 
@@ -23,10 +24,9 @@ class PurchaseHistory extends React.Component{
 
    turnCartsToComponents = () =>{
     //    const pastCartArr = this.props.pastCarts.map( cart => this.breakDownCarts(cart))
-    console.log(this.props.pastCarts)
-       const returnThis = this.props.pastCarts.map( (pastCart,index) => {
+       const returnThis = this.props.pastCarts.map( (pastCart) => {
            return (
-            <div key = {index}>
+            <div key = {randomId()}>
             <PastItem pastCart = {this.breakDownCart(pastCart)} />
         </div>
         )
