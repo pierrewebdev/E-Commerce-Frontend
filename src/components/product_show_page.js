@@ -23,9 +23,10 @@ class ProductShow extends React.Component {
         width:"45vw",
         height:"auto"
     }
-    console.log(productInfo)
+
     return (
       <>
+        <br/>
         <div className="product-page-content-container">
           <div className="product-image-container">
             <img style = {imageStyles}
