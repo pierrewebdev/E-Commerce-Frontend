@@ -35,7 +35,7 @@ class ProductShow extends React.Component {
           </div>
           <div>
             <p>{productInfo.name}</p>
-            <p>Description:{productInfo.description}</p>
+            <p>Description: {productInfo.description}</p>
             <p>${productInfo.price}</p>
             <button>Add to Cart</button>
           </div>
@@ -45,11 +45,19 @@ class ProductShow extends React.Component {
           <form>
             <p>Add a Headline to your Review</p>
             <input
+              style = {{padding:"5px 10px 5px 10px", width:"150px"}}
               type="text"
-              placeholder="How do you feel about this product?"
+              placeholder="Headline about Product"
             />
             <p>Tell us more details about what you think</p>
-            <textarea></textarea>
+            <textarea 
+            placeholder = "What did you like or dislike about this product?"
+            rows = "5"
+            cols = "40"
+            ></textarea>
+            <br/>
+            <br/>
+            <input type = "submit" value = "Add Your Review" />
           </form>
         </div>
       </>

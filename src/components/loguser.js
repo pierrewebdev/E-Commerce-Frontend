@@ -14,12 +14,14 @@ class LogUser extends React.Component {
     render() {
         const loginButton = (
             <Link to="/login" style={{ color: "black", textDecoration: "none" }}>
-              <i className="fa fa-user-o" aria-hidden="true"></i> Log In
+              <i className="fa fa-sign-in" aria-hidden="true"></i>
+               Log In
             </Link>
           )
       
           const logOutButton = (
-              <Link to = "/" style={{ color: "black", textDecoration: "none" }} onClick = {this.handleClick}><i className="fa fa-user-o" aria-hidden="true"> Log out</i></Link>
+              <Link to = "/" style={{ color: "black", textDecoration: "none" }} onClick = {this.handleClick} ><i className="fa fa-sign-in" aria-hidden="true"></i> Log out
+            </Link>
           )
 
         const buttonToRender = !this.props.customer.name ? loginButton : logOutButton

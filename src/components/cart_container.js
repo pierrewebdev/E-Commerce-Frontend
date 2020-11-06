@@ -27,8 +27,6 @@ class CartContainer extends React.Component {
         //send a post request to the backend to switch the current cart's checkout attribute to true
         //return a new cart
         const cartId = this.props.cartId
-        const token = this.props.token
-        console.log(cartId)
         //POST request to send cart id and token
         fetch("http://localhost:3000/check-out",{
             method:"POST",

@@ -30,7 +30,7 @@ class Header extends React.Component {
               <Link
                 style={{ color: "black", textDecoration: "none" }}
                 to="#"
-              >{`${this.props.customer}'s profile`}</Link>
+              ><i className="fa fa-user" aria-hidden="true"></i> {`${this.props.customer}'s profile`}</Link>
             </li>
           ) : null}
           <li>

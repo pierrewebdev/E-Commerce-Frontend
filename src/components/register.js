@@ -44,6 +44,8 @@ class RegisterForm extends React.Component {
         localStorage.setItem("token", customer.token)
         
       })
+    //send back to home page
+    this.props.routerProps.history.push("/")
   }
 
   render() {
