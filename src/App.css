@@ -14,6 +14,10 @@
   margin: 15px 0 0 -0px;
 }
 
+.header-span{
+  color:#88C8BC;
+}
+
 .search-bar{
   margin: 15px 0 0 0;
 }
@@ -29,7 +33,9 @@
 
 /*styling for navbar ul in header*/
 .navbar{
-  background-color: aquamarine;
+  background-color: #88C8BC;
+  border-top: 0.5px solid #60b8a8;
+  border-bottom:0.5px solid #60b8a8;
   padding:20px;
   margin-bottom:0px;
   display:flex;
@@ -38,6 +44,7 @@
 .navbar > li{
   list-style-type: none;
 }
+
 
 /*styling for image in header*/
 
@@ -262,6 +269,34 @@
 .purchase-history-item > img,p{
   margin:20px;
 }
+
+
+/*Styling for Review Modal Pop up*/
+
+.review-popup-overlay{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.review-popup-content{
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-form{
+  border: 10px, solid, black;
+  border-radius: 50%;
+}
+
+/* [role='tooltip'].review-popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+} */
+
 
 
 
