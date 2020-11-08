@@ -1,10 +1,12 @@
 import React from "react"
+import StarRatingComponent from 'react-star-rating-component';
 
 class ReviewForm extends React.Component{
 
     state = {
         headline:"",
-        content:""
+        content:"",
+        rating:0
     }
 
     handleUserInput = (evt) => {
@@ -16,19 +18,60 @@ class ReviewForm extends React.Component{
         })
     }
 
+    handleStarClick = (nextValue, prevValue, name) => {
+        this.setState({rating: nextValue});
+      }
+
+    handleSubmit = (evt) =>{
+        evt.preventDefault()
+        const reviewHeadline = evt.currentTarget.headline.value
+        const reviewContent = evt.currentTarget.content.value
+        const rating = this.state.rating
+
+        //make a post request to my backend with the content of the review
+        fetch("http://localhost:3000/reviews", {
+            method:"POST",
+            headers:{
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: localStorage.token
+            },
+            body: JSON.stringify({
+                headline:reviewHeadline,
+                rating: rating,
+                content: reviewContent,
+                productId: this.props.productId
+            })
+        })
+        .then(res => res.json())
+        .then(console.log)
+    }
+
     render(){
         return (
             <div>
           {/* Product Review Form Goes Here */}
-          <form className = "review-form">
+          <form onSubmit = {this.handleSubmit} className = "review-form">
             <p>Add a Headline to your Review</p>
             <input
               style = {{padding:"5px 10px 5px 10px", width:"150px"}}
               type="text"
               name = "headline"
+              className = "review-headline"
               placeholder="Headline about Product"
               value = {this.state.headline}
               onChange = {this.handleUserInput}
+            />
+            <p>How would you rate this product out of 5?</p>
+            <StarRatingComponent
+              name = {"rating"}
+              starCount = {5}
+              starColor = {"gold"}
+              emptyStarColor={"gainsboro"}
+              editing={true}
+              value = {this.state.rating}
+              onStarClick = {this.handleStarClick}
+
             />
             <p>Tell us more details about what you think</p>
             <textarea 
@@ -42,7 +85,10 @@ class ReviewForm extends React.Component{
             <br/>
             <br/>
             <input 
-            type = "submit" value = "Add Your Review" />
+            type = "submit" 
+            value = "Add Your Review"
+            className = "review-form-submit" 
+            />
           </form>
         </div>
         )

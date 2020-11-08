@@ -292,11 +292,46 @@
   border-radius: 50%;
 }
 
-/* [role='tooltip'].review-popup-content {
-  width: 200px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
-} */
+.review-form-submit {
+  width:90%;
+  padding:5px;
+}
 
+.review-headline{
+  margin-left: 20%;
+}
 
+/*Selector for the react start rating component*/
+/* .dv-star-rating is the div for the component*/
+/* .dv-star-rating-input is the selector for each individual star*/
+.dv-star-rating{
+  font-size: 25px;
+  display:flex;
+  justify-content: center;
+}
+
+/*styling for customer review components*/
+
+.customer-review-li{
+  list-style-type: none;
+}
+
+.customer-review-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.customer-review{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:60%;
+}
+ 
+.customer-review-headline{
+  font-weight: bold;
+  font-size: 18px;
+}
 
 

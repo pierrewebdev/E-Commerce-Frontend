@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import ReviewForm from "./review_form";
 import Popup from "reactjs-popup";
+import CustomerReview from "./customer_review"
+import {randomId} from "../randomIdGenerator.js"
 
 class ProductShow extends React.Component {
   getProductInfoFromState = () => {
@@ -17,8 +19,25 @@ class ProductShow extends React.Component {
     return productIWant;
   };
 
+  turnReviewsToComponents = () =>{
+    const reviews = this.getProductInfoFromState().reviews;
+
+    //loop through each review and generate a CustomerReview Component with it
+    return reviews.map(review => {
+      console.log(review)
+      return <li className = "customer-review-li" key = {randomId()} >
+        <CustomerReview
+         headline = {review.headline}
+         content = {review.content}
+         reviewRating = {review.rating} 
+        />
+      </li>
+    })
+  }
+
   render() {
     const productInfo = this.getProductInfoFromState();
+    console.log(this.turnReviewsToComponents())
     const imageStyles = {
       width: "45vw",
       height: "auto",
@@ -38,9 +57,15 @@ class ProductShow extends React.Component {
           <div>
             <p>{productInfo.name}</p>
             <p>Description: {productInfo.description}</p>
-            <p>${productInfo.price}</p>
+            <p>Price: ${productInfo.price}</p>
             <button>Add to Cart</button>
           </div>
+        </div>
+        <div>
+          <p style = {{fontSize:"28px", textDecoration:"underline"}}>Customer Reviews:</p>
+          <ul>
+            {this.turnReviewsToComponents()}
+          </ul>
         </div>
         <Popup
           className = "review-popup"
@@ -51,7 +76,7 @@ class ProductShow extends React.Component {
           }
         modal
         >
-          <ReviewForm />
+          <ReviewForm productId = {productInfo.id} />
         </Popup>
       </>
     );
