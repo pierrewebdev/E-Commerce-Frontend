@@ -24,9 +24,9 @@ class ProductShow extends React.Component {
 
     //loop through each review and generate a CustomerReview Component with it
     return reviews.map(review => {
-      console.log(review)
       return <li className = "customer-review-li" key = {randomId()} >
         <CustomerReview
+         reviewerName = {review.customer_name}
          headline = {review.headline}
          content = {review.content}
          reviewRating = {review.rating} 
@@ -37,7 +37,6 @@ class ProductShow extends React.Component {
 
   render() {
     const productInfo = this.getProductInfoFromState();
-    console.log(this.turnReviewsToComponents())
     const imageStyles = {
       width: "45vw",
       height: "auto",
@@ -55,7 +54,7 @@ class ProductShow extends React.Component {
             />
           </div>
           <div>
-            <p>{productInfo.name}</p>
+            <h1>{productInfo.name}</h1>
             <p>Description: {productInfo.description}</p>
             <p>Price: ${productInfo.price}</p>
             <button>Add to Cart</button>

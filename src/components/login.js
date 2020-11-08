@@ -43,7 +43,6 @@ class LoginForm extends React.Component {
     })
     .then(res => res.json())
     .then(customer => {
-        console.log(customer)
         if(customer.error){
             alert(`${customer.error}`)
         }else{

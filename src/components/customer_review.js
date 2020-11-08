@@ -1,5 +1,6 @@
+import BeautyStars from "beauty-stars";
 import React from "react";
-import StarRatingComponent from "react-star-rating-component";
+
 
 class CustomerReview extends React.Component {
   render() {
@@ -7,13 +8,14 @@ class CustomerReview extends React.Component {
       <div className="customer-review-container">
         <div className="customer-review">
           <p className="customer-review-headline">{this.props.headline}</p>
-          <StarRatingComponent
-            name="review"
-            value={this.props.reviewRating}
-            starColor={"gold"}
-            editing={false}
-          />
+           <BeautyStars
+              value = {this.props.reviewRating}
+              inactiveColor = {"#2a2a2a"}
+              activeColor = {"gold"}
+              size = {"15px"}
+            />
           <p>{this.props.content}</p>
+          <span><i className="fa fa-user-circle" aria-hidden="true"></i> {this.props.reviewerName}</span>
         </div>
       </div>
     );

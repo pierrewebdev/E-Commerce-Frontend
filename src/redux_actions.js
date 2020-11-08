@@ -65,4 +65,11 @@ const deleteProductFromCart = (productToDeleteFromCart) =>{
     return objectToReturn
 }
 
-export {setCustomer, setProducts, logoutCustomer, updateStateWithNewCart, addToCart, deleteProductFromCart }
+const addNewReview = (reviewObj) =>{
+    return {
+        payload:reviewObj,
+        type: "ADD_REVIEW"
+    }
+}
+
+export {setCustomer, setProducts, logoutCustomer, updateStateWithNewCart, addToCart, deleteProductFromCart, addNewReview }
