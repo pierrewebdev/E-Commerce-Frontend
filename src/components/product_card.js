@@ -51,7 +51,7 @@ class ProductCard extends React.Component {
             <button onClick = {this.addToCart} style = {this.showMe()} className = "product-btn-add">Add to Cart</button>
             <button className = "product-btn-info" style = {this.showMe()}><Link style={{ color: "white", textDecoration: "none" }} to = {`${this.props.name}`}>More info</Link></button>
           </div>
-          <p className="product-card-name" onClick = {this.seeProductPage}>{this.props.name}</p>
+          <p className="product-card-name">{this.props.name}</p>
           <span>${this.props.price}</span>
         </div>
       );

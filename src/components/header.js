@@ -22,7 +22,7 @@ class Header extends React.Component {
           </li>
           <li>
             <Link style={{ color:"white", textDecoration: "none" }} to="/cart">
-              <i className="fa fa-shopping-cart"></i> Shopping Cart
+              <i className="fa fa-shopping-cart"></i> Shopping Cart [{this.props.currentCartCount}]
             </Link>
           </li>
           {this.props.customer ? (
@@ -44,7 +44,8 @@ class Header extends React.Component {
 
 const mapStateToProps = (globalState) => {
   return {
-    customer: globalState.customerInfo.name
+    customer: globalState.customerInfo.name,
+    currentCartCount: globalState.customerInfo.currentCart.length
   };
 };
 

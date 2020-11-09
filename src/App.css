@@ -2,6 +2,23 @@
   text-align: center;
 }
 
+/*styling for the search bar and search container*/
+#search-container{
+  position: absolute;
+  background-color: whitesmoke;
+  width:270px;
+  visibility:hidden;
+}
+
+.fontAwesome {
+  font-family:'FontAwesome', sans-serif;
+}
+
+#search-container > ul > li{
+  list-style-type: none;
+  margin: 5px;
+}
+
 /*styling for title and search bar in the site's header*/
 .title-and-search-bar{
   display:flex;
@@ -20,11 +37,12 @@
 
 .search-bar{
   margin: 15px 0 0 0;
+  position: relative;
 }
 
 .search-bar > input{
   padding:10px;
-  width:300px;
+  width:250px;
 }
 
 .search-bar > button{

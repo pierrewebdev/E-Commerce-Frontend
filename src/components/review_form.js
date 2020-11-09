@@ -47,7 +47,7 @@ class ReviewForm extends React.Component {
       .then((res) => res.json())
       .then((reviewObj) => {
         this.props.addNewReview(reviewObj);
-      });
+      })
   };
 
   render() {
@@ -66,16 +66,6 @@ class ReviewForm extends React.Component {
             onChange={this.handleUserInput}
           />
           <p>How would you rate this product out of 5?</p>
-          {/* <StarRatingComponent
-              name = {"rating"}
-              starCount = {5}
-              starColor = {"gold"}
-              emptyStarColor={"gainsboro"}
-              editing={true}
-              value = {this.state.rating}
-              onStarClick = {this.handleStarClick}
-
-            /> */}
           <BeautyStars
             value={this.state.rating}
             inactiveColor={"black"}
