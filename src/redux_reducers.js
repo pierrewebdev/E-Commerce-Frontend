@@ -22,6 +22,7 @@ const productReducer = (state = {products:[]}, action) => {
         
         //here I use the lodash library to make a true copy of my state
         const deepCopiedProductObj = lodash.cloneDeep(state)
+        debugger
         deepCopiedProductObj.products.find(product => product.id === product_id).reviews.push(newProductReview)
 
           const objectToReturn = Object.assign({}, state, deepCopiedProductObj)

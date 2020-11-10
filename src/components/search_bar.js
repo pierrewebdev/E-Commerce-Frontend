@@ -6,12 +6,12 @@ import {randomId} from "../randomIdGenerator"
 class SearchBar extends React.Component{
 
     state = {
-        search: ""
+        searchValue: ""
     }
 
     turnProductsToNamedLinks = (searchTerm) =>{
         const products = this.props.products
-        const filteredProducts =  products.filter(product => product.name.toLowerCase().includes(searchTerm))
+        const filteredProducts =  products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
         return filteredProducts.map( product => {
           return <li key = {randomId()}>
@@ -24,27 +24,25 @@ class SearchBar extends React.Component{
         const inputText = evt.currentTarget.value
   
         this.setState({
-          search:inputText,
-          visbibleSearchTerms:true
+          searchValue:inputText
         })
     }
 
     showSearchTerms = () =>{
-        return this.state.search.length > 0 ? {visibility:"visible"} : {visibility:"hidden"}
+        return this.state.searchValue.length > 0 ? {visibility:"visible"} : {visibility:"hidden"}
     }
     render(){
-        console.log(this.turnProductsToNamedLinks(this.state.search))
         return(
             <div>
             <form>
                 <div className = "search-bar">
-                <input className = "fontAwesome" type="text" autoComplete='off' name = "search" value = {this.state.search.toLowerCase()} onChange = {this.handleUserInput} placeholder="&#xf002; Search"/>
+                <input className = "fontAwesome" type="text" autoComplete='off' name = "search" value = {this.state.searchValue} onChange = {this.handleUserInput} placeholder="&#xf002; Search"/>
                 </div>
                 {/* <button type="submit"><i className="fa fa-search"></i></button> */}
             </form>
               <div style = {this.showSearchTerms()} id = "search-container">
                 <ul>
-                    {this.turnProductsToNamedLinks(this.state.search)}
+                    {this.turnProductsToNamedLinks(this.state.searchValue)}
                 </ul>
               </div>
             </div>

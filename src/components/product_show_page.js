@@ -24,6 +24,7 @@ class ProductShow extends React.Component {
 
     //loop through each review and generate a CustomerReview Component with it
     return reviews.map(review => {
+      console.log(review.customer_name)
       return <li className = "customer-review-li" key = {randomId()} >
         <CustomerReview
          reviewerName = {review.customer_name}
