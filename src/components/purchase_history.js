@@ -39,7 +39,7 @@ class PurchaseHistory extends React.Component{
 
     render(){
         return (
-            <div>
+            <div className = "purchase-history-container">
               {this.turnCartsToComponents()}
             </div>
         )

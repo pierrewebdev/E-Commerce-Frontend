@@ -27,7 +27,7 @@ class ProductContainer extends React.Component {
   render() {
     return (
       <div className="product-container">
-        <p className="product-container-title">Our Collection:</p>
+        <h2 className="product-container-title">Our Collection</h2>
         <ul>{this.turnProductsToComponents()}</ul>
       </div>
     );

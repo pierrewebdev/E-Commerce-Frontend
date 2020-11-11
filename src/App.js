@@ -8,7 +8,7 @@ import CartContainer from "./components/cart_container";
 import PurchaseHistory from "./components/purchase_history";
 import "./App.css";
 import { connect } from "react-redux";
-import { withRouter, Switch, Route, Redirect} from "react-router-dom";
+import { withRouter, Switch, Route, Redirect } from "react-router-dom";
 
 //imports for my redux actions
 import { setCustomer, setProducts } from "./redux_actions.js";
@@ -41,12 +41,12 @@ class App extends React.Component {
   }
 
   renderShowPage = (props) => {
-    if(this.props.token){
-      return <ProductShow routerProps = {props} />
-    } else{
-      return <Redirect to = "/"/>
+    if (this.props.token) {
+      return <ProductShow routerProps={props} />;
+    } else {
+      return <Redirect to="/" />;
     }
-  }
+  };
 
   render() {
     return (
@@ -73,10 +73,9 @@ class App extends React.Component {
             <PurchaseHistory />
           </Route>
           <Route
-              exact
-              path="/:productname"
-              render={(props) => this.renderShowPage(props)}
-            />
+            path="/:productname"
+            render={(props) => this.renderShowPage(props)}
+          />
         </Switch>
         <footer className="footer">
           <a href="https://github.com/pierrewebdev/">
@@ -96,7 +95,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (globalState) => {
   return {
     products: globalState.productInfo.products,
-    token : globalState.customerInfo.token
+    token: globalState.customerInfo.token,
   };
 };
 

@@ -42,7 +42,7 @@ class ProductShow extends React.Component {
       width: "45vw",
       height: "auto",
     };
-
+    console.log(this.props)
     return (
       <>
         <br />
@@ -58,7 +58,7 @@ class ProductShow extends React.Component {
             <h1>{productInfo.name}</h1>
             <p>Description: {productInfo.description}</p>
             <p>Price: ${productInfo.price}</p>
-            <button>Add to Cart</button>
+            <button className = "review-button">Add to Cart</button>
           </div>
         </div>
         <div>
@@ -70,7 +70,7 @@ class ProductShow extends React.Component {
         <Popup
           className = "review-popup"
           trigger={
-            <button type="button" className="button">
+            <button type="button" className="review-button">
               Add a Review
             </button>
           }

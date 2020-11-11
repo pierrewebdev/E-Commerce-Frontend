@@ -12,6 +12,7 @@ class LogUser extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         const loginButton = (
             <Link to="/login" style={{ color: "white", textDecoration: "none" }}>
               <i className="fa fa-sign-in" aria-hidden="true"></i>
@@ -20,7 +21,7 @@ class LogUser extends React.Component {
           )
       
           const logOutButton = (
-              <Link to = "/" style={{ color: "white", textDecoration: "none" }} onClick = {this.handleClick} ><i className="fa fa-sign-in" aria-hidden="true"></i> Log out
+              <Link to = "/login" style={{ color: "white", textDecoration: "none" }} onClick = {this.handleClick} ><i className="fa fa-sign-in" aria-hidden="true"></i> Log out
             </Link>
           )
 

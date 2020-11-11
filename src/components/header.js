@@ -11,7 +11,7 @@ class Header extends React.Component {
         <div className="title-and-search-bar">
           <p className="title">
             <Link style={{ fontSize:"30px", color:"black", textDecoration: "none" }} to="/">
-              <span className = "header-span">H</span>ealth and Fit Store
+             Health and Fit Store
             </Link>
           </p>
           <SearchBar />
