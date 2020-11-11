@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import ReviewForm from "./review_form";
 import Popup from "reactjs-popup";
-import CustomerReview from "./customer_review"
-import {randomId} from "../randomIdGenerator.js"
+import CustomerReview from "./customer_review";
+import { randomId } from "../randomIdGenerator.js";
 
 class ProductShow extends React.Component {
   getProductInfoFromState = () => {
@@ -19,22 +19,23 @@ class ProductShow extends React.Component {
     return productIWant;
   };
 
-  turnReviewsToComponents = () =>{
+  turnReviewsToComponents = () => {
     const reviews = this.getProductInfoFromState().reviews;
 
     //loop through each review and generate a CustomerReview Component with it
-    return reviews.map(review => {
-      console.log(review.customer_name)
-      return <li className = "customer-review-li" key = {randomId()} >
-        <CustomerReview
-         reviewerName = {review.customer_name}
-         headline = {review.headline}
-         content = {review.content}
-         reviewRating = {review.rating} 
-        />
-      </li>
-    })
-  }
+    return reviews.map((review) => {
+      return (
+        <li className="customer-review-li" key={randomId()}>
+          <CustomerReview
+            reviewerName={review.customer_name}
+            headline={review.headline}
+            content={review.content}
+            reviewRating={review.rating}
+          />
+        </li>
+      );
+    });
+  };
 
   render() {
     const productInfo = this.getProductInfoFromState();
@@ -42,7 +43,6 @@ class ProductShow extends React.Component {
       width: "45vw",
       height: "auto",
     };
-    console.log(this.props)
     return (
       <>
         <br />
@@ -58,25 +58,27 @@ class ProductShow extends React.Component {
             <h1>{productInfo.name}</h1>
             <p>Description: {productInfo.description}</p>
             <p>Price: ${productInfo.price}</p>
-            <button className = "review-button">Add to Cart</button>
+            <button className="review-button">Add to Cart</button>
           </div>
         </div>
         <div>
-          <p style = {{fontSize:"28px", textDecoration:"underline"}}>Customer Reviews:</p>
-          <ul>
-            {this.turnReviewsToComponents()}
-          </ul>
+          <h2 style={{ fontSize: "30px" }}>Customer Reviews</h2>
+          {this.turnReviewsToComponents().length > 0 ? (
+            <ul>{this.turnReviewsToComponents()}</ul>
+          ) : (
+            <p>No Reviews for this Product </p>
+          )}
         </div>
         <Popup
-          className = "review-popup"
+          className="review-popup"
           trigger={
             <button type="button" className="review-button">
               Add a Review
             </button>
           }
-        modal
+          modal
         >
-          <ReviewForm productId = {productInfo.id} />
+          <ReviewForm productId={productInfo.id} />
         </Popup>
       </>
     );
