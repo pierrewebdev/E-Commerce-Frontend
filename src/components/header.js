@@ -18,11 +18,11 @@ class Header extends React.Component {
         </div>
         <ul className="navbar">
           <li>
-           <Link style={{ color:"white", textDecoration: "none" }} to = "/purchase-history"> <i className="fa fa-book" aria-hidden="true"></i> Purchase History</Link>
+           <Link style={{ color:"white", textDecoration: "none" }} to = "/purchase-history"> <i style = {{fontSize:"20px"}} className="fa fa-book" aria-hidden="true"></i> Purchase History</Link>
           </li>
-          <li>
+          <li style = {{position:"relative"}}>
             <Link style={{ color:"white", textDecoration: "none" }} to="/cart">
-              <i className="fa fa-shopping-cart"></i> Shopping Cart [{this.props.currentCartCount}]
+              <i style = {{fontSize:"20px"}} className="fa fa-shopping-cart"></i> Cart <span id = "cart-count">({this.props.currentCartCount})</span>
             </Link>
           </li>
           {this.props.customer ? (
@@ -30,7 +30,7 @@ class Header extends React.Component {
               <Link
                 style={{ color:"white", textDecoration: "none" }}
                 to="#"
-              ><i className="fa fa-user" aria-hidden="true"></i> {`${this.props.customer}'s profile`}</Link>
+              ><i style = {{fontSize:"20px"}} className="fa fa-user" aria-hidden="true"></i> {`${this.props.customer}'s profile`}</Link>
             </li>
           ) : null}
           <li>

@@ -40,9 +40,15 @@ class ProductShow extends React.Component {
   render() {
     const productInfo = this.getProductInfoFromState();
     const imageStyles = {
-      width: "45vw",
+      width: "100%",
       height: "auto",
+      borderRadius:"30px"
     };
+
+    const descriptionStyles = {
+      textAlign:"left",
+      margin: "10px 0px"
+    }
     return (
       <>
         <br />
@@ -54,15 +60,16 @@ class ProductShow extends React.Component {
               alt={productInfo.name}
             />
           </div>
-          <div>
+          <div className = "product-info">
             <h1>{productInfo.name}</h1>
-            <p>Description: {productInfo.description}</p>
-            <p>Price: ${productInfo.price}</p>
+            <p style = {descriptionStyles}>Product Details: </p>
+            <p style = {descriptionStyles}>{productInfo.description}</p>
+            <p style = {descriptionStyles}>Price: ${productInfo.price}</p>
             <button className="review-button">Add to Cart</button>
           </div>
         </div>
         <div>
-          <h2 style={{ fontSize: "30px" }}>Customer Reviews</h2>
+          <h2 style={{ fontSize: "26px" }}>Customer Reviews</h2>
           {this.turnReviewsToComponents().length > 0 ? (
             <ul>{this.turnReviewsToComponents()}</ul>
           ) : (

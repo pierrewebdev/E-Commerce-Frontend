@@ -1,14 +1,17 @@
 .App {
   text-align: center;
+  min-height: 60vh;
 }
 
 /*styling for the search bar and search container*/
 #search-container{
   position: absolute;
   background-color: whitesmoke;
-  width:270px;
-  visibility:hidden;
+  max-width: 250px;
+  visibility: hidden;
   z-index:12;
+  max-height: 90vh;
+  overflow-y: scroll;
 }
 
 .fontAwesome {
@@ -21,6 +24,7 @@
 }
 
 /*styling for title and search bar in the site's header*/
+
 .title-and-search-bar{
   display:flex;
   flex-direction: row;
@@ -37,6 +41,7 @@
 .search-bar{
   margin: 15px 0 0 0;
   position: relative;
+  width:250px;
 }
 
 .search-bar > input{
@@ -51,24 +56,29 @@
 /*styling for navbar ul in header*/
 .navbar{
   background-color: #88C8BC;
-  border-top: 0.5px solid #60b8a8;
-  border-bottom:0.5px solid #60b8a8;
+  /* border-top: 0.5px solid #60b8a8;
+  border-bottom:0.5px solid #60b8a8; */
   padding:20px;
   margin-bottom:0px;
   display:flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width:100%;
 }
 .navbar > li{
   list-style-type: none;
 }
 
+/*styling for cart count in navigation menu*/
 
-/*styling for image in header*/
+#cart-count{
+  font-size: 13px;
+}
+
+/*styling for image under header*/
 
 
 .banner{
-  height:600px;
+  height:100vh;
   padding: 20px;
   width:100%;
   opacity: 1.0;
@@ -96,7 +106,7 @@
   width:100%;
   height: 100%;
   background-color: #568d83;
-  /* background-image: linear-gradient(to left,#568d83, #88C8BC); */
+  background-image: linear-gradient(to left,#568d83, #88C8BC);
   position: absolute;
   top:0;
   left:0;
@@ -115,6 +125,7 @@
 
 .product-container > ul > li{
   list-style-type: none;
+  flex-basis: 33%;
 }
 
 .product-container-title{
@@ -184,6 +195,7 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 
@@ -231,15 +243,21 @@
 
 .login-div{
   margin:50px;
-  margin-bottom:250px;
+  margin-bottom:270px;
 }
 
 .login-form{
   border:1px  solid rgb(85, 82, 82);
+  box-shadow: 5px 5px 19px -10px #000000;
+  border-radius: 30px;
   width:400px;
   background-color: white;
   padding:10px;
   margin: 0 auto;
+}
+
+.login-form > *{
+  margin:10px;
 }
 
 .login-form > h1{
@@ -306,10 +324,16 @@
   border-bottom: 1px gray solid;
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+/* Styling for purchase history*/
+
+
+.purchase-history-container{
+  margin: 25px 0;
+  min-height: inherit;
 }
 
-/* Styling for purchase history*/
 
 .purchase-history-item{
   display:flex;
@@ -317,13 +341,45 @@
   justify-content: space-around;
   align-items: space-around;
   flex-wrap:wrap;
-  max-width:auto;
-  margin:0 100px 0 100px;
-  min-height:70vh;
+  /* max-width:auto; */
+  /* margin:0 100px 0 100px;
+  min-height:70vh; */
 }
 
-.purchase-history-item > img,p{
-  margin:20px;
+.purchase-history-item > div{
+  margin:20px 0px;
+  flex-basis:20%;
+}
+
+
+
+/*Styling for Product Show Pages*/
+.product-page-content-container{
+  display: flex;
+ flex-direction: column;
+}
+.product-page-content-container > *{
+  margin:60px 40px;
+}
+
+.product-image-container{
+  align-self: center;
+  width:600px;
+}
+
+.product-info{
+  max-width:600px;
+  text-align: center;
+  align-self: center;
+}
+.product-info > h1{
+  font-size: 35px;
+}
+
+
+.product-show-btn{
+  background-color: black;
+  color:white;
 }
 
 
@@ -357,14 +413,6 @@
   margin-left: 20%;
 }
 
-/*Selector for the react start rating component*/
-/* .dv-star-rating is the div for the component*/
-/* .dv-star-rating-input is the selector for each individual star*/
-.dv-star-rating{
-  font-size: 25px;
-  display:flex;
-  justify-content: center;
-}
 
 /*styling for customer review components*/
 
@@ -395,6 +443,5 @@
   padding:10px;
   margin: 20px 0px;
   color:white;
-  width:10%;
 }
 

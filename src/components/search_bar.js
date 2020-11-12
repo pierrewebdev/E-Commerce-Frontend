@@ -15,7 +15,7 @@ class SearchBar extends React.Component{
 
         return filteredProducts.map( product => {
           return <li key = {randomId()}>
-              <Link style={{ color: "black", textDecoration: "none" }} to = {product.name}>{product.name}</Link>
+              <Link onClick = {() => this.setState({searchValue:""})} style={{ color: "black", textDecoration: "none" }} to = {product.name}>{product.name}</Link>
           </li>
         })
     }
@@ -39,12 +39,12 @@ class SearchBar extends React.Component{
                 <input className = "fontAwesome" type="text" autoComplete='off' name = "search" value = {this.state.searchValue} onChange = {this.handleUserInput} placeholder="&#xf002; Search"/>
                 </div>
                 {/* <button type="submit"><i className="fa fa-search"></i></button> */}
-            </form>
-              <div style = {this.showSearchTerms()} id = "search-container">
+                <div style = {this.showSearchTerms()} id = "search-container">
                 <ul>
                     {this.turnProductsToNamedLinks(this.state.searchValue)}
                 </ul>
               </div>
+            </form>
             </div>
         )
     }

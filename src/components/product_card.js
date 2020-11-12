@@ -41,15 +41,14 @@ class ProductCard extends React.Component {
   render(){
     return (
         <div onMouseEnter = {evt => this.swapBooleanState()} onMouseLeave = {evt => this.swapBooleanState()} className="product-card">
-          <div style = {{position:"relative",
-      width: "50%", maxWidth: "500px"}}>
+          <div style = {{position:"relative"}}>
             <img
               className="product-card-image"
               src={this.props.image}
               alt="One of our Fitness and Health Products"
             />
             <button onClick = {this.addToCart} style = {this.showMe()} className = "product-btn-add">Add to Cart</button>
-            <button className = "product-btn-info" style = {this.showMe()}><Link style={{ color: "white", textDecoration: "none" }} to = {`${this.props.name}`}>More info</Link></button>
+           <Link className = "product-btn-info" style = {this.showMe()} to = {`${this.props.name}`}>More info</Link>
           </div>
           <p className="product-card-name">{this.props.name}</p>
           <span>${this.props.price}</span>

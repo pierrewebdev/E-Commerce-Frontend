@@ -18,8 +18,8 @@ function PastItem(props) {
 
   return (
     <div>
-      <p style = {{fontSize:"22px",fontWeight:"bold"}}>Ordered on {props.pastCart.timeStamp} </p>
-      <p style = {{fontSize:"22px",fontWeight:"bold"}}>Total Price: ${props.pastCart.price} </p>
+      <p style = {{fontSize:"25px",fontWeight:"bold"}}>Ordered on {props.pastCart.timeStamp}  </p>
+      <p style = {{fontSize:"25px",fontWeight:"light"}}>Total Price: ${props.pastCart.price} </p>
       <div className = "purchase-history-item">
         {generateItemComponents()}
       </div>
