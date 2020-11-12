@@ -9,11 +9,9 @@ class Header extends React.Component {
     return (
       <header className="header">
         <div className="title-and-search-bar">
-          <p className="title">
-            <Link style={{ fontSize:"30px", color:"black", textDecoration: "none" }} to="/">
-             Health and Fit Store
+            <Link to="/">
+            <img className = "header-img" src = "https://res.cloudinary.com/interactive-gallery/image/upload/v1605221446/health_and_fit_logo_tfblzh.png" alt = "Health and Fit Logo"/>
             </Link>
-          </p>
           <SearchBar />
         </div>
         <ul className="navbar">
