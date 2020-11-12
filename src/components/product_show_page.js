@@ -4,6 +4,7 @@ import ReviewForm from "./review_form";
 import Popup from "reactjs-popup";
 import CustomerReview from "./customer_review";
 import { randomId } from "../randomIdGenerator.js";
+import {addToCart} from "../redux_actions.js";
 
 class ProductShow extends React.Component {
   getProductInfoFromState = () => {
@@ -37,6 +38,26 @@ class ProductShow extends React.Component {
     });
   };
 
+  addToCart = () =>{
+    //make a fetch request to add the item in the customer's current cart
+    const productInfo = this.getProductInfoFromState();
+    fetch("http://localhost:3000/cart_products",{
+        method:"POST",
+        headers:{
+          "Authorization": localStorage.token,
+          "Content-Type":"application/json",
+          Accept:"application/json"
+        },
+        body:JSON.stringify({
+          productId :productInfo.id
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        this.props.addToCart(data.product)
+    })
+  }
+
   render() {
     const productInfo = this.getProductInfoFromState();
     const imageStyles = {
@@ -65,7 +86,7 @@ class ProductShow extends React.Component {
             <p style = {descriptionStyles}>Product Details: </p>
             <p style = {descriptionStyles}>{productInfo.description}</p>
             <p style = {descriptionStyles}>Price: ${productInfo.price}</p>
-            <button className="review-button">Add to Cart</button>
+            <button onClick = {this.addToCart} className="product-show-btn">Add to Cart</button>
           </div>
         </div>
         <div>
@@ -79,7 +100,7 @@ class ProductShow extends React.Component {
         <Popup
           className="review-popup"
           trigger={
-            <button type="button" className="review-button">
+            <button type="button" className="product-show-btn">
               Add a Review
             </button>
           }
@@ -92,10 +113,12 @@ class ProductShow extends React.Component {
   }
 }
 
+const mapDispatchToProps = {addToCart}
+
 const mapStateToProps = (globalState) => {
   return {
     products: globalState.productInfo.products,
   };
 };
 
-export default connect(mapStateToProps, null)(ProductShow);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductShow);

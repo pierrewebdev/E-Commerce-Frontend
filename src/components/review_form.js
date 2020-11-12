@@ -52,12 +52,12 @@ class ReviewForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className = "review-content">
         {/* Product Review Form Goes Here */}
         <form onSubmit={this.handleSubmit} className="review-form">
           <p>Add a Headline to your Review</p>
           <input
-            style={{ padding: "5px 10px 5px 10px", width: "150px" }}
+            style={{ padding: "5px 10px 5px 10px", minWidth: "250px" }}
             type="text"
             name="headline"
             className="review-headline"
@@ -65,6 +65,8 @@ class ReviewForm extends React.Component {
             value={this.state.headline}
             onChange={this.handleUserInput}
           />
+          <br/>
+          <br/>
           <p>How would you rate this product out of 5?</p>
           <BeautyStars
             value={this.state.rating}
@@ -73,6 +75,8 @@ class ReviewForm extends React.Component {
             onChange={this.handleStarClick}
             size={"28px"}
           />
+          <br/>
+          <br/>
           <p>Tell us more details about what you think</p>
           <textarea
             name="content"

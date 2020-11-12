@@ -242,7 +242,7 @@
 /*styling for log in form component*/
 
 .login-div{
-  margin:50px;
+  margin:80px;
   margin-bottom:270px;
 }
 
@@ -256,6 +256,7 @@
   margin: 0 auto;
 }
 
+
 .login-form > *{
   margin:10px;
 }
@@ -266,7 +267,7 @@
 .input-container{
   border:solid whitesmoke;
   background-color:#f9f9f9;
-  width:200px;
+  width:215px;
   height:30px;
   margin: 10px auto 10px auto;
 }
@@ -300,7 +301,7 @@
 
 /*styling for register form component*/
 .register-form-div{
-  margin: 50px 0px 220px 0;
+  margin: 50px 0px 280px 0;
 }
 
 /*styling for shopping cart's CartContainer component*/
@@ -394,7 +395,9 @@
 
 
 .product-show-btn{
-  background-color: black;
+  background-color: #333;
+  padding:10px 20px;
+  margin: 20px 0px;
   color:white;
 }
 
@@ -415,6 +418,14 @@
   align-items: center;
 }
 
+.review-popup-content > *{
+  margin: 27px 0;
+}
+
+.review-content{
+  margin: 10px 0px;
+}
+
 .review-form{
   border: 10px, solid, black;
   border-radius: 50%;
@@ -425,9 +436,9 @@
   padding:5px;
 }
 
-.review-headline{
+/* .review-headline{
   margin-left: 20%;
-}
+} */
 
 
 /*styling for customer review components*/
@@ -449,6 +460,10 @@
   width:60%;
 }
  
+.customer-review > *{
+  margin: 5px 0px;
+}
+
 .customer-review-headline{
   font-weight: bold;
   font-size: 18px;
@@ -459,5 +474,7 @@
   padding:10px;
   margin: 20px 0px;
   color:white;
+  border-radius: 30px;
 }
+
 
