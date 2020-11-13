@@ -25,10 +25,7 @@ class Header extends React.Component {
           </li>
           {this.props.customer ? (
             <li>
-              <Link
-                style={{ color:"white", textDecoration: "none" }}
-                to="#"
-              ><i style = {{fontSize:"20px"}} className="fa fa-user" aria-hidden="true"></i> {`${this.props.customer}'s profile`}</Link>
+              <i style = {{fontSize:"20px",color:"white"}} className="fa fa-user" aria-hidden="true"> {`${this.props.customer}'s profile`}</i>
             </li>
           ) : null}
           <li>

@@ -122,6 +122,7 @@ class CartContainer extends React.Component {
             amount = {this.props.price * 100}
             shippingAddress = {true}
             billingAddress = {true}
+            autocomplete="off"
             currency = "USD"
             closed = {() => alert("Thank you for shopping with us!")}
             token = {this.onToken}

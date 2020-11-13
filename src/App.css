@@ -4,7 +4,11 @@
 }
 
 /*get rid of blue border around all inputs in forms*/
-input{
+input,button{
+  outline-style: none;
+}
+
+textarea{
   outline-style: none;
 }
 
@@ -376,15 +380,21 @@ input{
 /*Styling for Product Show Pages*/
 .product-page-content-container{
   display: flex;
- flex-direction: column;
+ flex-direction: row;
+ justify-content: center;
 }
 .product-page-content-container > *{
-  margin:60px 40px;
+  margin:80px 20px;
 }
 
 .product-image-container{
   align-self: center;
-  width:600px;
+}
+
+.product-show-img{
+  width:auto;
+  max-height:400px;
+  border-radius: 30px;
 }
 
 .product-info{
@@ -394,11 +404,19 @@ input{
 }
 .product-info > h1{
   font-size: 35px;
+  text-align: left;
+}
+
+.product-info > p{
+  text-align:left;
+  margin: 10px 0px;
+  font-size: 18px;
 }
 
 
 .product-show-btn{
   background-color: #333;
+  min-width:200px;
   padding:10px 20px;
   margin: 20px 0px;
   color:white;
@@ -480,4 +498,40 @@ input{
   border-radius: 30px;
 }
 
+/*styling for user profile*/
+.user-profile{
+  margin-top:100px;
+  margin-bottom: 450px;
+}
+
+
+
+
+/*styles for cart alerts*/
+
+.alert {
+  padding: 20px;
+  background-color: #4e746d;
+  color: white;
+  width:550px;
+  height:50px;
+  position: absolute;
+ left:55%;
+ margin-top:50px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 

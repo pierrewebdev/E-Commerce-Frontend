@@ -62,6 +62,7 @@ class ReviewForm extends React.Component {
             name="headline"
             className="review-headline"
             placeholder="Headline about Product"
+            autocomplete="off"
             value={this.state.headline}
             onChange={this.handleUserInput}
           />

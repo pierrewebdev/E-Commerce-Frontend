@@ -60,6 +60,7 @@ class RegisterForm extends React.Component {
             name="name"
             value={this.state.name}
             onChange={this.handleUserInput}
+            autocomplete="off"
           />
         </div>
 
@@ -71,6 +72,7 @@ class RegisterForm extends React.Component {
             name="email"
             value={this.state.email}
             onChange={this.handleUserInput}
+            autocomplete="off"
           />
         </div>
         <div className="input-container">
@@ -82,6 +84,7 @@ class RegisterForm extends React.Component {
             type="password"
             value={this.state.password}
             onChange={this.handleUserInput}
+            autocomplete="off"
           />
         </div>
 

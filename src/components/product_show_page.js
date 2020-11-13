@@ -4,7 +4,7 @@ import ReviewForm from "./review_form";
 import Popup from "reactjs-popup";
 import CustomerReview from "./customer_review";
 import { randomId } from "../randomIdGenerator.js";
-import {addToCart} from "../redux_actions.js";
+import { addToCart } from "../redux_actions.js";
 
 class ProductShow extends React.Component {
   getProductInfoFromState = () => {
@@ -38,63 +38,57 @@ class ProductShow extends React.Component {
     });
   };
 
-  addToCart = () =>{
+  addToCart = () => {
     //make a fetch request to add the item in the customer's current cart
     const productInfo = this.getProductInfoFromState();
-    fetch("http://localhost:3000/cart_products",{
-        method:"POST",
-        headers:{
-          "Authorization": localStorage.token,
-          "Content-Type":"application/json",
-          Accept:"application/json"
-        },
-        body:JSON.stringify({
-          productId :productInfo.id
-        })
+    fetch("http://localhost:3000/cart_products", {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.token,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        productId: productInfo.id,
+      }),
     })
-    .then(res => res.json())
-    .then(data => {
-        this.props.addToCart(data.product)
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        this.props.addToCart(data.product);
+      });
+  };
 
   render() {
     const productInfo = this.getProductInfoFromState();
-    const imageStyles = {
-      width: "100%",
-      height: "auto",
-      borderRadius:"30px"
-    };
-
-    const descriptionStyles = {
-      textAlign:"left",
-      margin: "10px 0px"
-    }
     return (
       <>
         <br />
         <div className="product-page-content-container">
           <div className="product-image-container">
             <img
-              style={imageStyles}
+              className="product-show-img"
               src={productInfo.image}
               alt={productInfo.name}
             />
           </div>
-          <div className = "product-info">
+          <div className="product-info">
             <h1>{productInfo.name}</h1>
-            <p style = {descriptionStyles}>Product Details: </p>
-            <p style = {descriptionStyles}>{productInfo.description}</p>
-            <p style = {descriptionStyles}>Price: ${productInfo.price}</p>
-            <button onClick = {this.addToCart} className="product-show-btn">Add to Cart</button>
+            <p>Product Details: </p>
+            <p>{productInfo.description}</p>
+            <p>Price: ${productInfo.price}</p>
+            <button onClick={this.addToCart} className="product-show-btn">
+              Add to Cart
+            </button>
           </div>
         </div>
         <div>
-          <h2 style={{ fontSize: "26px" }}>Customer Reviews</h2>
+          <h2 style={{ fontSize: "28px", marginBottom: "20px" }}>
+            Customer Reviews
+          </h2>
           {this.turnReviewsToComponents().length > 0 ? (
             <ul>{this.turnReviewsToComponents()}</ul>
           ) : (
-            <p>No Reviews for this Product </p>
+            <p style={{ fontSize: "18px" }}>No Reviews for this Product </p>
           )}
         </div>
         <Popup
@@ -113,7 +107,7 @@ class ProductShow extends React.Component {
   }
 }
 
-const mapDispatchToProps = {addToCart}
+const mapDispatchToProps = { addToCart };
 
 const mapStateToProps = (globalState) => {
   return {
