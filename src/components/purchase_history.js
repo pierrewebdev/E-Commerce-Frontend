@@ -36,7 +36,7 @@ class PurchaseHistory extends React.Component {
   render() {
     return this.props.pastCarts.length < 1 ? (
       <div className = "purchase-history-container">
-          <p style = {{margin:"100px", fontSize:"20px"}}>Haven't made any purchases yet...</p>
+          <p style = {{margin:"100px", fontSize:"24px"}}>Haven't made any purchases yet...</p>
       </div>
     ) : (
       <div className="purchase-history-container">

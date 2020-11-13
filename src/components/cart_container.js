@@ -107,7 +107,7 @@ class CartContainer extends React.Component {
     );
 
     const ternary =
-      this.props.products.length > 0 ? component : <p>Your Cart is empty</p>;
+      this.props.products.length > 0 ? component : <div><p style = {{fontSize:"18px"}}>Your Cart is empty</p></div>
 
     return (
       <div id="cart-container">
