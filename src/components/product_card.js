@@ -35,7 +35,6 @@ class ProductCard extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        debugger
         this.props.addToCart(data)
       })
   }

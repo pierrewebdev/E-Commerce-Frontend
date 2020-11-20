@@ -27,7 +27,6 @@ const productReducer = (state = {products:[]}, action) => {
           const objectToReturn = Object.assign({}, state, deepCopiedProductObj)
           return objectToReturn
       default:
-          console.log("you've hit the default in the reducer")
         return state
     }
   };
@@ -68,6 +67,14 @@ const userReducer = (state = userReducerDefault,action) =>{
                 currentCart:copyOfCurrentCart,
                 totalPrice: state.totalPrice + action.payload.price
             }
+        case "INCREASE QUANTITY":
+          const deepCopyOfCurrentCart = lodash.cloneDeep(state.currentCart)
+          const productToUpdate = deepCopyOfCurrentCart.find(item => item.product.id === action.payload.id)
+          productToUpdate.quantity = action.payload.quantity
+          return {
+              ...state,
+              currentCart: deepCopyOfCurrentCart
+          }
         case "NEW_CART":
             const newCart = action.payload.new_cart.serialized_products
             const newCartId = action.payload.new_cart.id
@@ -83,17 +90,15 @@ const userReducer = (state = userReducerDefault,action) =>{
 
             }
         case "DELETE":
-            // console.log("Deleting an item from the cart")
-            const filteredCart = state.currentCart.filter( product => {
-                return product.id !== action.payload.id
+            const copiedCurrentCart = lodash.cloneDeep(state.currentCart)
+            const filteredCart = copiedCurrentCart.filter( product => {
+                return product.product.id !== action.payload.id
             })
             return {
                 ...state,
-                currentCart:filteredCart,
-                totalPrice: state.totalPrice - action.payload.price
+                currentCart:filteredCart
             }
         default:
-            // console.log("you hit the default in the customer reducer")
             return state
     }
 }

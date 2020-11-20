@@ -5,14 +5,22 @@ function CartItem(props) {
     props.delete(props.productId);
   };
 
-  // const pTagStyles = {
-  //   fontSize: "16px",
-  //   width:"400px"
-  // };
-  console.log(props)
+  const handleIncrement = () =>{
+    props.incrementQuantity(props.productId)
+  }
+
+  const quantitySpanStyles = {
+    margin:"0 10px",
+    fontSize:"16px",
+    cursor:"pointer"
+  };
+
+  const quantityDivStyles = {
+    border:"1px solid"
+  }
 
   return (
-    <div className = "cart-container">
+    <div className="cart-container">
       <div className="cart-item">
         <div>
           <img
@@ -22,12 +30,19 @@ function CartItem(props) {
           />
         </div>
         <div>
-          <p style = {{fontWeight:"bold"}}>{props.name}</p>
+          <p style={{ fontWeight: "bold" }}>{props.name}</p>
           <p>{props.description}</p>
         </div>
         <div>
-          <p style = {{fontSize: "20px"}}>Price: ${props.price}</p>
-          <span>{props.quantity}</span>
+          <p style={{ fontSize: "18px" }}>Price: ${props.price}</p>
+          <div>
+          <p>Quantity:</p>
+          <div style = {quantityDivStyles}>
+            <span onClick = {props.decrementQuantity} style = {quantitySpanStyles}>-</span>
+            {props.quantity}
+            <span onClick = {handleIncrement} style = {quantitySpanStyles}>+</span>
+          </div>
+        </div>
           <button className="review-button" onClick={handleDelete}>
             Remove
           </button>

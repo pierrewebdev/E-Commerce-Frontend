@@ -11,7 +11,6 @@ class LogUser extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     const loginButton = (
       <Link to="/login" style={{ color: "white", textDecoration: "none" }}>
         <i

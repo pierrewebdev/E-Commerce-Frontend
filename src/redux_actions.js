@@ -59,6 +59,20 @@ const addToCart = (productToAddToCart) =>{
     }
 }
 
+//Action to increase the quantity of an item in the cart
+
+const increaseQuantity = (updatedProduct) => {
+    const {product,quantity} = updatedProduct
+    const finalProduct = {...product, quantity}
+    return{
+        payload:finalProduct,
+        type: "INCREASE QUANTITY"
+    }
+}
+
+
+//Action to delete a product from the cart
+
 const deleteProductFromCart = (productToDeleteFromCart) =>{
     const objectToReturn = {
         payload:productToDeleteFromCart,
@@ -74,4 +88,4 @@ const addNewReview = (reviewObj) =>{
     }
 }
 
-export {setCustomer, setProducts, logoutCustomer, updateStateWithNewCart, addToCart, deleteProductFromCart, addNewReview }
+export {setCustomer, setProducts, logoutCustomer, updateStateWithNewCart, addToCart, increaseQuantity, deleteProductFromCart, addNewReview }

@@ -2,6 +2,7 @@ import React from "react";
 import {
   deleteProductFromCart,
   updateStateWithNewCart,
+  increaseQuantity
 } from "../redux_actions.js";
 import { connect } from "react-redux";
 import CartItem from "./cart_item";
@@ -27,27 +28,55 @@ class CartContainer extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-         this.handleCheckout()
+        this.handleCheckout();
       });
   };
 
   arrOfCartItems = () => {
+    debugger
     const niceData = this.props.products.slice();
-    console.log(niceData)
 
-    return niceData.map((productObj) => (
-      <li style={{ listStyleType: "none" }} key={randomId()}>
+    return niceData.map((productObj) => {
+      return <li style={{ listStyleType: "none" }} key={randomId()}>
         <CartItem
-          productId={productObj.product.id}
+          productId={productObj.id}
           name={productObj.product.name}
           image={productObj.product.image}
           description={productObj.product.description}
-          quantity = {productObj.quantity}
+          quantity={productObj.quantity}
           price={productObj.product.price}
           delete={this.deleteFromCart}
+          decrementQuantity={this.decrementQuantity}
+          incrementQuantity={this.incrementQuantity}
         />
       </li>
-    ));
+    });
+  };
+
+  decrementQuantity = () => {
+    //logic to decrease quantity
+    console.log("You are trying to decrease");
+  };
+
+  incrementQuantity = (productId) => {
+    const cartId = this.props.cartId;
+    //logic to increae quantity
+    fetch("http://localhost:3000/increment-quantity", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.token,
+      },
+      body: JSON.stringify({
+        productId: productId,
+        cartId: cartId
+      })
+    })
+      .then((res) => res.json())
+      .then((updatedProduct) => {
+        this.props.increaseQuantity(updatedProduct)
+      });
   };
 
   handleCheckout = () => {
@@ -60,7 +89,7 @@ class CartContainer extends React.Component {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: localStorage.token
+        Authorization: localStorage.token,
       },
       body: JSON.stringify({
         cartId: cartId,
@@ -88,7 +117,7 @@ class CartContainer extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        this.props.deleteProductFromCart(data.product)
+        this.props.deleteProductFromCart(data.product);
       });
   };
 
@@ -108,7 +137,13 @@ class CartContainer extends React.Component {
     );
 
     const ternary =
-      this.props.products.length > 0 ? component : <div><p style = {{fontSize:"18px"}}>Your Cart is empty</p></div>
+      this.props.products.length > 0 ? (
+        component
+      ) : (
+        <div>
+          <p style={{ fontSize: "18px" }}>Your Cart is empty</p>
+        </div>
+      );
 
     return (
       <div id="cart-container">
@@ -118,18 +153,18 @@ class CartContainer extends React.Component {
         <ul>{ternary}</ul>
 
         <StripeCheckout
-            name = "Health and Fitness Store"
-            description = "Please Enter the Relevant Info Below"
-            amount = {this.props.price * 100}
-            shippingAddress = {true}
-            billingAddress = {true}
-            autocomplete="off"
-            currency = "USD"
-            closed = {() => alert("Thank you for shopping with us!")}
-            token = {this.onToken}
-            stripeKey = {process.env.REACT_APP_STRIPE_API_KEY}
+          name="Health and Fitness Store"
+          description="Please Enter the Relevant Info Below"
+          amount={this.props.price * 100}
+          shippingAddress={true}
+          billingAddress={true}
+          autocomplete="off"
+          currency="USD"
+          closed={() => alert("Thank you for shopping with us!")}
+          token={this.onToken}
+          stripeKey={process.env.REACT_APP_STRIPE_API_KEY}
         >
-        <button style = {buttonStyles}>Check Out</button>
+          <button style={buttonStyles}>Check Out</button>
         </StripeCheckout>
       </div>
     );
@@ -139,12 +174,12 @@ class CartContainer extends React.Component {
 const mapStateToProps = (globalState) => {
   return {
     products: globalState.customerInfo.currentCart,
-    cartId: globalState.customerInfo.currentCartId
+    cartId: globalState.customerInfo.currentCartId,
   };
 };
 
 // price: globalState.customerInfo.totalPrice
 
-const mapDispatchToProps = { updateStateWithNewCart, deleteProductFromCart };
+const mapDispatchToProps = { updateStateWithNewCart, deleteProductFromCart, increaseQuantity };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
