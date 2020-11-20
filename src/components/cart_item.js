@@ -9,6 +9,7 @@ function CartItem(props) {
   //   fontSize: "16px",
   //   width:"400px"
   // };
+  console.log(props)
 
   return (
     <div className = "cart-container">
@@ -26,6 +27,7 @@ function CartItem(props) {
         </div>
         <div>
           <p style = {{fontSize: "20px"}}>Price: ${props.price}</p>
+          <span>{props.quantity}</span>
           <button className="review-button" onClick={handleDelete}>
             Remove
           </button>

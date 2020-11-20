@@ -22,7 +22,6 @@ const productReducer = (state = {products:[]}, action) => {
         
         //here I use the lodash library to make a true copy of my state
         const deepCopiedProductObj = lodash.cloneDeep(state)
-        debugger
         deepCopiedProductObj.products.find(product => product.id === product_id).reviews.push(newProductReview)
 
           const objectToReturn = Object.assign({}, state, deepCopiedProductObj)
@@ -70,7 +69,6 @@ const userReducer = (state = userReducerDefault,action) =>{
                 totalPrice: state.totalPrice + action.payload.price
             }
         case "NEW_CART":
-            // console.log("Creating new cart for customer")
             const newCart = action.payload.new_cart.serialized_products
             const newCartId = action.payload.new_cart.id
             const newTotalPrice = action.payload.new_cart.total_price

@@ -32,16 +32,18 @@ class CartContainer extends React.Component {
   };
 
   arrOfCartItems = () => {
-    const niceProducts = this.props.products.slice();
+    const niceData = this.props.products.slice();
+    console.log(niceData)
 
-    return niceProducts.map((product) => (
+    return niceData.map((productObj) => (
       <li style={{ listStyleType: "none" }} key={randomId()}>
         <CartItem
-          productId={product.id}
-          name={product.name}
-          image={product.image}
-          description={product.description}
-          price={product.price}
+          productId={productObj.product.id}
+          name={productObj.product.name}
+          image={productObj.product.image}
+          description={productObj.product.description}
+          quantity = {productObj.quantity}
+          price={productObj.product.price}
           delete={this.deleteFromCart}
         />
       </li>
@@ -87,7 +89,6 @@ class CartContainer extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         this.props.deleteProductFromCart(data.product)
-        // setTimeout(() => this.props.deleteProductFromCart(data.product), 6000);
       });
   };
 
@@ -138,10 +139,11 @@ class CartContainer extends React.Component {
 const mapStateToProps = (globalState) => {
   return {
     products: globalState.customerInfo.currentCart,
-    cartId: globalState.customerInfo.currentCartId,
-    price: globalState.customerInfo.totalPrice,
+    cartId: globalState.customerInfo.currentCartId
   };
 };
+
+// price: globalState.customerInfo.totalPrice
 
 const mapDispatchToProps = { updateStateWithNewCart, deleteProductFromCart };
 
