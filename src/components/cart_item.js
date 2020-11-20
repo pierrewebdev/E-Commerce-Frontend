@@ -9,6 +9,10 @@ function CartItem(props) {
     props.incrementQuantity(props.productId)
   }
 
+  const handleDecrement = () =>{
+    props.decrementQuantity(props.productId)
+  }
+
   const quantitySpanStyles = {
     margin:"0 10px",
     fontSize:"16px",
@@ -38,7 +42,7 @@ function CartItem(props) {
           <div>
           <p>Quantity:</p>
           <div style = {quantityDivStyles}>
-            <span onClick = {props.decrementQuantity} style = {quantitySpanStyles}>-</span>
+            <span onClick = {handleDecrement} style = {quantitySpanStyles}>-</span>
             {props.quantity}
             <span onClick = {handleIncrement} style = {quantitySpanStyles}>+</span>
           </div>

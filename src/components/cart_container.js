@@ -2,7 +2,8 @@ import React from "react";
 import {
   deleteProductFromCart,
   updateStateWithNewCart,
-  increaseQuantity
+  increaseQuantity,
+  decreaseQuantity
 } from "../redux_actions.js";
 import { connect } from "react-redux";
 import CartItem from "./cart_item";
@@ -33,13 +34,12 @@ class CartContainer extends React.Component {
   };
 
   arrOfCartItems = () => {
-    debugger
     const niceData = this.props.products.slice();
 
     return niceData.map((productObj) => {
       return <li style={{ listStyleType: "none" }} key={randomId()}>
         <CartItem
-          productId={productObj.id}
+          productId={productObj.product.id}
           name={productObj.product.name}
           image={productObj.product.image}
           description={productObj.product.description}
@@ -53,9 +53,25 @@ class CartContainer extends React.Component {
     });
   };
 
-  decrementQuantity = () => {
-    //logic to decrease quantity
-    console.log("You are trying to decrease");
+  decrementQuantity = (productId) => {
+    const cartId = this.props.cartId;
+    //logic to increae quantity
+    fetch("http://localhost:3000/decrement-quantity", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.token,
+      },
+      body: JSON.stringify({
+        productId: productId,
+        cartId: cartId
+      })
+    })
+      .then((res) => res.json())
+      .then((updatedProduct) => {
+        this.props.decreaseQuantity(updatedProduct)
+      });
   };
 
   incrementQuantity = (productId) => {
@@ -180,6 +196,6 @@ const mapStateToProps = (globalState) => {
 
 // price: globalState.customerInfo.totalPrice
 
-const mapDispatchToProps = { updateStateWithNewCart, deleteProductFromCart, increaseQuantity };
+const mapDispatchToProps = { updateStateWithNewCart, deleteProductFromCart, increaseQuantity, decreaseQuantity };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);

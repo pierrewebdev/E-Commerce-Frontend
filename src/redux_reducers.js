@@ -40,7 +40,6 @@ const userReducerDefault = {
     token:"",
     currentCart:[],
     currentCartId:0,
-    totalPrice:0,
     pastCarts:[]
 }
 const userReducer = (state = userReducerDefault,action) =>{
@@ -64,8 +63,7 @@ const userReducer = (state = userReducerDefault,action) =>{
 
             return {
                 ...state,
-                currentCart:copyOfCurrentCart,
-                totalPrice: state.totalPrice + action.payload.price
+                currentCart:copyOfCurrentCart
             }
         case "INCREASE QUANTITY":
           const deepCopyOfCurrentCart = lodash.cloneDeep(state.currentCart)
@@ -75,17 +73,23 @@ const userReducer = (state = userReducerDefault,action) =>{
               ...state,
               currentCart: deepCopyOfCurrentCart
           }
+          case "DECREASE QUANTITY":
+            const deepCopyOfCurrentCartForDelete = lodash.cloneDeep(state.currentCart)
+            const productToDelete = deepCopyOfCurrentCartForDelete.find(item => item.product.id === action.payload.id)
+            productToDelete.quantity = action.payload.quantity
+            return {
+              ...state,
+              currentCart: deepCopyOfCurrentCartForDelete
+            }
         case "NEW_CART":
             const newCart = action.payload.new_cart.serialized_products
             const newCartId = action.payload.new_cart.id
-            const newTotalPrice = action.payload.new_cart.total_price
             const pastCarts = action.payload.past_carts
 
             return {
                 ...state,
                 currentCart:newCart,
                 currentCartId:newCartId,
-                totalPrice: newTotalPrice,
                 pastCarts: pastCarts
 
             }
