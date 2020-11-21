@@ -34,7 +34,7 @@ class CartContainer extends React.Component {
   };
 
   arrOfCartItems = () => {
-    const niceData = this.props.products.slice();
+    const niceData = this.props.products;
 
     return niceData.map((productObj) => {
       return <li style={{ listStyleType: "none" }} key={randomId()}>

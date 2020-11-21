@@ -51,10 +51,8 @@ const updateStateWithNewCart = (newCart) =>{
 
 //Action to add a new product into the current customer's cart in redux store
 const addToCart = (productToAddToCart) =>{
-    const {product,quantity} = productToAddToCart
-    const finalProduct = {...product, quantity}
     return{
-        payload:finalProduct,
+        payload:productToAddToCart,
         type: "ADD_TO_CART"
     }
 }
