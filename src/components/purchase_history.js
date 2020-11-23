@@ -4,21 +4,23 @@ import { connect } from "react-redux";
 import { randomId } from "../randomIdGenerator";
 
 class PurchaseHistory extends React.Component {
+
   //method to destructure cart serialized_products array into something easier to work with
   breakDownCart = (cart) => {
     //this returns a cart with a timestamp, a price and a simplified array of products
-    const betterProducts = cart.serialized_products.map((product) => {
-      return {
-        name: product.name,
-        image: product.image,
-      };
-    });
+    // const betterProducts = cart.serialized_products.map((productObj) => {
+    //   console.log(productObj)
+    //   return {
+    //     name: productObj.name,
+    //     image: productObj.image,
+    //   };
+    // });
 
-    return {
-      timeStamp: cart.nice_timestamp,
-      price: cart.total_price,
-      pastProducts: betterProducts,
-    };
+    // return {
+    //   timeStamp: cart.nice_timestamp,
+    //   price: cart.total_price,
+    //   pastProducts: betterProducts,
+    // };
   };
 
   turnCartsToComponents = () => {
@@ -26,7 +28,7 @@ class PurchaseHistory extends React.Component {
     const returnThis = this.props.pastCarts.map((pastCart) => {
       return (
         <div key={randomId()}>
-          <PastItem pastCart={this.breakDownCart(pastCart)} />
+          <PastItem pastCart={pastCart} />
         </div>
       );
     });

@@ -95,6 +95,16 @@ class CartContainer extends React.Component {
       });
   };
 
+  calculateTotalPrice = (productsArr) => {
+    let totalPrice = 0;
+
+    productsArr.forEach( productObj => {
+      totalPrice += (productObj.product.price * productObj.quantity);
+    })
+
+    return totalPrice;
+  }
+
   handleCheckout = () => {
     //send a post request to the backend to switch the current cart's checkout attribute to true
     //return a new cart
@@ -145,12 +155,15 @@ class CartContainer extends React.Component {
       padding: "5px",
       margin: "20px",
     };
-    const nicePrice = this.props.price;
+
     const component = (
       <>
         <ul>{this.arrOfCartItems()}</ul>
       </>
     );
+
+    const totalPrice = this.calculateTotalPrice(this.props.products);
+    
 
     const ternary =
       this.props.products.length > 0 ? (
@@ -160,18 +173,17 @@ class CartContainer extends React.Component {
           <p style={{ fontSize: "18px" }}>Your Cart is empty</p>
         </div>
       );
-
     return (
       <div id="cart-container">
         <p style={{ fontWeight: "bold", fontSize: "23px" }}>
-          Total Price: ${nicePrice}{" "}
+          Total Price: ${totalPrice}
         </p>
         <ul>{ternary}</ul>
 
         <StripeCheckout
           name="Health and Fitness Store"
           description="Please Enter the Relevant Info Below"
-          amount={this.props.price * 100}
+          amount={totalPrice * 100}
           shippingAddress={true}
           billingAddress={true}
           autocomplete="off"
