@@ -2,6 +2,8 @@ import React from "react";
 import {addToCart} from "../redux_actions.js"
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import {toast} from "react-toastify"
+
 
 class ProductCard extends React.Component {
 
@@ -36,6 +38,7 @@ class ProductCard extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.props.addToCart(data)
+        toast.dark(`Added ${data.product.name.toLowerCase()} to your cart`)
       })
   }
   render(){

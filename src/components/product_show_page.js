@@ -5,6 +5,8 @@ import Popup from "reactjs-popup";
 import CustomerReview from "./customer_review";
 import { randomId } from "../randomIdGenerator.js";
 import { addToCart } from "../redux_actions.js";
+import {toast} from "react-toastify"
+
 
 class ProductShow extends React.Component {
   getProductInfoFromState = () => {
@@ -54,7 +56,8 @@ class ProductShow extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        this.props.addToCart(data.product);
+        this.props.addToCart(data);
+        toast.dark(`Added ${data.product.name.toLowerCase()} to your cart`)
       });
   };
 

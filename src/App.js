@@ -9,6 +9,8 @@ import PurchaseHistory from "./components/purchase_history";
 import "./App.css";
 import { connect } from "react-redux";
 import { withRouter, Switch, Route, Redirect } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css"
+import {ToastContainer,Zoom} from "react-toastify"
 
 //imports for my redux actions
 import { setCustomer, setProducts } from "./redux_actions.js";
@@ -52,6 +54,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
+        <> <ToastContainer
+          draggable = {false}
+          transition = {Zoom}
+          autoClose = {5000}
+          hideProgressBar = {true}
+          pauseOnHover
+        /></>
         <Switch>
           <Route
             exact

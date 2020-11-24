@@ -2,6 +2,8 @@ import React from "react";
 import { setCustomer } from "../redux_actions.js";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import {toast} from "react-toastify"
+
 import "../App.css";
 
 class LoginForm extends React.Component {
@@ -44,7 +46,7 @@ class LoginForm extends React.Component {
       .then((res) => res.json())
       .then((customer) => {
         if (customer.error) {
-          alert(`${customer.error}`);
+          toast.dark(`${customer.error}`)
         } else {
           const betterCustomerObj = {
             customer: { ...customer.customer_info },
