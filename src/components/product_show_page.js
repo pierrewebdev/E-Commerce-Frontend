@@ -43,7 +43,7 @@ class ProductShow extends React.Component {
   addToCart = () => {
     //make a fetch request to add the item in the customer's current cart
     const productInfo = this.getProductInfoFromState();
-    fetch("http://localhost:3000/cart_products", {
+    fetch("https://health-and-fit-store-api.herokuapp.com/cart_products", {
       method: "POST",
       headers: {
         Authorization: localStorage.token,

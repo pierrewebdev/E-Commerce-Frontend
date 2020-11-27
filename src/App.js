@@ -18,7 +18,7 @@ import { setCustomer, setProducts } from "./redux_actions.js";
 class App extends React.Component {
   componentDidMount() {
     //make a fetch request for the products in my backend
-    const requestUrl = "http://localhost:3000";
+    const requestUrl = "https://health-and-fit-store-api.herokuapp.com/";
 
     fetch(`${requestUrl}/products`)
       .then((res) => res.json())
@@ -29,7 +29,7 @@ class App extends React.Component {
 
     //keep user logged in if localStorage still has token
     if (localStorage.token) {
-      fetch("http://localhost:3000/keep-logged-in", {
+      fetch(`${requestUrl}/keep-logged-in`, {
         method: "GET",
         headers: {
           Authorization: localStorage.token,

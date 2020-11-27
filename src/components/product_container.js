@@ -34,7 +34,6 @@ class ProductContainer extends React.Component {
   }
 }
 
-//I want to receive the state of my products as props from React-Redux
 
 const mapStateToProps = (globalState) => {
   return {

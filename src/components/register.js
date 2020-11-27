@@ -22,7 +22,7 @@ class RegisterForm extends React.Component {
   handleSubmit = (evt) =>{
       evt.preventDefault()
       //make a fetch request to the register endpoint on my backend
-      fetch("http://localhost:3000/register",{
+      fetch("https://health-and-fit-store-api.herokuapp.com/register",{
           method:"POST",
           headers:{
               "Content-Type":"application/json",

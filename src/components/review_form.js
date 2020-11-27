@@ -30,7 +30,7 @@ class ReviewForm extends React.Component {
     const rating = this.state.rating;
 
     //make a post request to my backend with the content of the review
-    fetch("http://localhost:3000/reviews", {
+    fetch("https://health-and-fit-store-api.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

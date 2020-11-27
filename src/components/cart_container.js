@@ -17,7 +17,7 @@ class CartContainer extends React.Component {
       token: token.id,
     };
 
-    fetch("http://localhost:3000/create-charge", {
+    fetch("https://health-and-fit-store-api.herokuapp.com/create-charge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ class CartContainer extends React.Component {
   decrementQuantity = (productId) => {
     const cartId = this.props.cartId;
     //logic to increae quantity
-    fetch("http://localhost:3000/decrement-quantity", {
+    fetch("https://health-and-fit-store-api.herokuapp.com/decrement-quantity", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ class CartContainer extends React.Component {
   incrementQuantity = (productId) => {
     const cartId = this.props.cartId;
     //logic to increae quantity
-    fetch("http://localhost:3000/increment-quantity", {
+    fetch("https://health-and-fit-store-api.herokuapp.com/increment-quantity", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -110,7 +110,7 @@ class CartContainer extends React.Component {
     //return a new cart
     const cartId = this.props.cartId;
     //POST request to send cart id and token
-    fetch("http://localhost:3000/check-out", {
+    fetch("https://health-and-fit-store-api.herokuapp.com/check-out", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -129,7 +129,7 @@ class CartContainer extends React.Component {
 
   deleteFromCart = (productId) => {
     const cartId = this.props.cartId;
-    fetch("http://localhost:3000/delete-from-cart", {
+    fetch("https://health-and-fit-store-api.herokuapp.com/delete-from-cart", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -206,7 +206,6 @@ const mapStateToProps = (globalState) => {
   };
 };
 
-// price: globalState.customerInfo.totalPrice
 
 const mapDispatchToProps = { updateStateWithNewCart, deleteProductFromCart, increaseQuantity, decreaseQuantity };
 

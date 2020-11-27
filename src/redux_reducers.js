@@ -45,20 +45,17 @@ const userReducerDefault = {
 const userReducer = (state = userReducerDefault,action) =>{
     switch(action.type){
         case "SET CUSTOMER":
-            // console.log("Setting a new Customer")
             const newState = {
                 ...state,
             ...action.payload
             }
             return newState
         case "LOGOUT":
-            // console.log("Logging out now")
             return {
                 ...state,
                 ...userReducerDefault
             }
         case "ADD_TO_CART":
-            // console.log("Adding item to customer's cart")
             const copyOfCurrentCart = [...state.currentCart,action.payload]
 
             return {
