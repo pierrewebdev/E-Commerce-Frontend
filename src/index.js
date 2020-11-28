@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./redux_reducers.js"
@@ -12,11 +12,11 @@ const storeObj = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && 
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter basename='/'>
+    <BrowserRouter basename='/'>
       <Provider store = {storeObj}>
         <App />
       </Provider>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
