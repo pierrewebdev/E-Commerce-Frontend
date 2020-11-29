@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
     const enteredPassword = evt.currentTarget.password.value;
 
     //make the fetch request to the login endpoint
-    const requestUrl = "https://health-and-fit-store-api.herokuapp.com/";
+    const requestUrl = "https://health-and-fit-store-api.herokuapp.com";
 
     fetch(`${requestUrl}/login`, {
       method: "POST",
