@@ -12,7 +12,7 @@ const storeObj = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && 
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/'>
       <Provider store = {storeObj}>
         <App />
       </Provider>
