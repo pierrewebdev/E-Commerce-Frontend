@@ -37,7 +37,7 @@ class App extends React.Component {
       })
         .then((res) => res.json())
         .then((customerInfo) => {
-          if(customerInfo){
+          if(customerInfo.customer){
             this.props.setCustomer(customerInfo);
           }else{
             console.log("user info sent from the backend was undefined")
