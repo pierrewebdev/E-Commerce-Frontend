@@ -37,6 +37,7 @@ class ProductCard extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
+        debugger
         this.props.addToCart(data)
         toast.dark(`Added ${data.product.name.toLowerCase()} to your cart`)
       })
