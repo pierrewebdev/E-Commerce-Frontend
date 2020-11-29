@@ -18,7 +18,7 @@ import { setCustomer, setProducts } from "./redux_actions.js";
 class App extends React.Component {
   componentDidMount() {
     //make a fetch request for the products in my backend
-    const requestUrl = "https://health-and-fit-store-api.herokuapp.com/";
+    const requestUrl = "https://health-and-fit-store-api.herokuapp.com";
 
     fetch(`${requestUrl}/products`)
       .then((res) => res.json())
