@@ -134,7 +134,7 @@ class CartContainer extends React.Component {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: localStorage.token,
+        Authorization: `Bearer ${localStorage.token}`,
       },
       body: JSON.stringify({
         productId: productId,

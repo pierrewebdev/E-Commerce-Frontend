@@ -46,7 +46,7 @@ class ProductShow extends React.Component {
     fetch("https://health-and-fit-store-api.herokuapp.com/cart_products", {
       method: "POST",
       headers: {
-        Authorization: localStorage.token,
+        Authorization: `Bearer ${localStorage.token}`,
         "Content-Type": "application/json",
         Accept: "application/json",
       },

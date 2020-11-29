@@ -27,7 +27,7 @@ class ProductCard extends React.Component {
       fetch("https://health-and-fit-store-api.herokuapp.com/cart_products",{
           method:"POST",
           headers:{
-            "Authorization": localStorage.token,
+            "Authorization": `Bearer ${localStorage.token}`,
             "Content-Type":"application/json",
             Accept:"application/json"
           },
@@ -37,7 +37,6 @@ class ProductCard extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        debugger
         this.props.addToCart(data)
         toast.dark(`Added ${data.product.name.toLowerCase()} to your cart`)
       })
