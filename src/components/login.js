@@ -36,11 +36,11 @@ class LoginForm extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json"
       },
       body: JSON.stringify({
         email: enteredEmail,
-        password: enteredPassword,
+        password: enteredPassword
       }),
     })
       .then((res) => res.json())

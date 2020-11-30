@@ -32,7 +32,7 @@ class App extends React.Component {
       fetch(`${requestUrl}/keep-logged-in`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.token}`,
+          "Authorization": localStorage.token
         },
       })
         .then((res) => res.json())

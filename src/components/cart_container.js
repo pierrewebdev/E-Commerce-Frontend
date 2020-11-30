@@ -133,12 +133,12 @@ class CartContainer extends React.Component {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${localStorage.token}`,
+        "Accept": "application/json",
+        "Authorization": localStorage.token
       },
       body: JSON.stringify({
         productId: productId,
-        cartId: cartId,
+        cartId: cartId
       }),
     })
       .then((res) => res.json())

@@ -34,14 +34,14 @@ class ReviewForm extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${localStorage.token}`,
+        "Accept": "application/json",
+        "Authorization": localStorage.token
       },
       body: JSON.stringify({
         headline: reviewHeadline,
         rating: rating,
         content: reviewContent,
-        productId: this.props.productId,
+        productId: this.props.productId
       }),
     })
       .then((res) => res.json())

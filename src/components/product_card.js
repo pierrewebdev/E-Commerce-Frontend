@@ -27,9 +27,9 @@ class ProductCard extends React.Component {
       fetch("https://health-and-fit-store-api.herokuapp.com/cart_products",{
           method:"POST",
           headers:{
-            "Authorization": `Bearer ${localStorage.token}`,
+            "Authorization": localStorage.token,
             "Content-Type":"application/json",
-            Accept:"application/json"
+            "Accept":"application/json"
           },
           body:JSON.stringify({
             productId :this.props.id
