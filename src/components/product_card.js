@@ -1,7 +1,7 @@
 import React from "react";
 import {addToCart} from "../redux_actions.js"
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import {toast} from "react-toastify"
 
 
@@ -24,7 +24,8 @@ class ProductCard extends React.Component {
 
   addToCart = () =>{
       //make a fetch request to add the item in the customer's current cart
-      fetch("https://health-and-fit-store-api.herokuapp.com/cart_products",{
+      if(this.props.customer.name !== ""){
+        fetch("https://health-and-fit-store-api.herokuapp.com/cart_products",{
           method:"POST",
           headers:{
             "Authorization": localStorage.token,
@@ -40,6 +41,9 @@ class ProductCard extends React.Component {
         this.props.addToCart(data)
         toast.dark(`Added ${data.product.name.toLowerCase()} to your cart`)
       })
+      } else{
+        toast.error("Please Log in First")
+      }
   }
   render(){
     return (
@@ -60,7 +64,13 @@ class ProductCard extends React.Component {
   }
 }
 
+const mapStateToProps = (globalState) => {
+  return {
+    customer:globalState.customerInfo
+  }
+}
+
 const mapDispatchToProps = {addToCart}
 
 
-export default connect(null,mapDispatchToProps)(ProductCard)
+export default connect(mapStateToProps,mapDispatchToProps)(ProductCard)

@@ -156,6 +156,7 @@ class CartContainer extends React.Component {
       width: "25%",
       padding: "5px",
       margin: "20px",
+      borderRadius:"30px"
     };
 
     const component = (

@@ -10,7 +10,7 @@ import "./App.css";
 import { connect } from "react-redux";
 import { withRouter, Switch, Route, Redirect } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css"
-import {ToastContainer,Zoom} from "react-toastify"
+import {toast, ToastContainer,Zoom} from "react-toastify"
 
 //imports for my redux actions
 import { setCustomer, setProducts } from "./redux_actions.js";
@@ -50,7 +50,8 @@ class App extends React.Component {
     if (this.props.token) {
       return <ProductShow routerProps={props} />;
     } else {
-      return <Redirect to="/" />;
+      toast.error("please log in first")
+      return <Redirect to="/login" />
     }
   };
 
