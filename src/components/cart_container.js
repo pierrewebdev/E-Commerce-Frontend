@@ -17,6 +17,8 @@ class CartContainer extends React.Component {
       token: token.id,
     };
 
+    const totalPrice = this.calculateTotalPrice(this.props.products);
+
     fetch("https://health-and-fit-store-api.herokuapp.com/create-charge", {
       method: "POST",
       headers: {
@@ -24,7 +26,7 @@ class CartContainer extends React.Component {
       },
       body: JSON.stringify({
         charge: charge,
-        price: this.props.price * 100,
+        price: totalPrice * 100,
       }),
     })
       .then((res) => res.json())
